@@ -6,15 +6,17 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 22:25:28 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/13 22:12:45 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/18 22:35:57 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(char *str)
+#include "push_swap.h"
+
+int	ft_atoi(char *str, s_data **data)
 {
 	int	i;
 	int	sign;
-	int	result;
+	long int	result;
 
 	i = 0;
 	sign = 1;
@@ -30,5 +32,11 @@ int	ft_atoi(char *str)
 		result = (result * 10) + str[i] - 48;
 		i++;
 	}
-	return (sign * result);
+	if ((sign * result) >= INT32_MIN && (sign * result <= INT32_MAX))
+		return (sign * result);
+	else
+	{
+		(*data) -> flag = 0;
+		return (sign * result);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:02:23 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/15 22:42:06 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/18 22:26:34 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,21 @@ typedef struct t_data
 	int	max_A;
 	int	min_B;
 	int max_B;
+	int flag;
 }s_data;
 
 //Utils
-void	create_linklist(s_stack **stack_x,int argc, char **argv);
+void	create_linklist(s_stack **stack,int argc, char **argv, s_data *data);
 void	create_data(s_data *data, int argc);
-int		ft_atoi(char *str);
+int		ft_atoi(char *str, s_data **data);
 // void	push_swap(s_stack **stack_x);
 void	find_min_a(s_stack *stack, s_data *data);
 void	find_min_b(s_stack *stack, s_data *data);
 void	find_max_a(s_stack *stack, s_data *data);
 void	find_max_b(s_stack *stack, s_data *data);
-
+int		is_a_sorted(s_stack *stack_A);
+char	**ft_split(char const *s, char c);
+void		is_duplicate(s_stack *stack);
 // Push Swap Operations
 void	swap_a(s_stack **stack_A, s_data *data);
 void	swap_b(s_stack **stack_B, s_data *data);
