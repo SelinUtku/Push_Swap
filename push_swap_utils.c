@@ -24,39 +24,23 @@ void	delete_ll(s_stack **stack)
 		free(first);
 	}	
 }
-// !!! NORMINETTE 
 void	create_linklist(s_stack **stack,int argc, char **argv, s_data *data)
 {
 	s_stack	*first;
 	s_stack	*last;
 	int	i;
-	long int if_not_int;
 	
 	i = 0;
-	if_not_int = ft_atoi(argv[0], &data);
-	if (data -> flag == 0)
-	{
-		printf("Error : Number is not integer\n");
-		delete_ll(stack);
-		return;
-	}
 	first = *stack;
-	first -> value = ft_atoi(argv[0], &data);
+	first -> value = ft_atoi(argv[0]);
 	first -> next = NULL;
 	(*stack) = first;
 	last = first;
 	while (++i < argc - 1)
 	{
-		if_not_int = ft_atoi(argv[i], &data);
-		if (data -> flag == 0)
-		{
-			printf("Error : Number is not integer\n");
-			delete_ll(stack);
-			return ;
-		}
 		s_stack	*tmp;
 		tmp = malloc (sizeof(s_stack));
-		tmp -> value = ft_atoi(argv[i],&data);
+		tmp -> value = ft_atoi(argv[i]);
 		tmp -> next = NULL;
 		last -> next = tmp;
 		last = tmp;

@@ -16,6 +16,30 @@
 // {
 	
 // }
+int	check_errors(int argc, char **argv, int flag)
+{
+	int i;
+
+	i = 0;
+	if (flag == -1)
+		i = -1;
+	while (++i < argc - 1)
+	{
+		if (ft_atoi(argv[i]) < INT32_MIN || ft_atoi(argv[i]) > INT32_MAX)
+		{
+			printf("Error : Not Int");
+			return (-1);
+		}
+		if (is_duplicate_arr(argv[i]) == -1)
+		{
+			printf("Error : Duplicate");
+			return (-1);
+		}
+		
+	}
+	return (0);
+}
+
 void	print_result(s_stack *stack, s_data data)
 {
 	while (stack)
@@ -25,6 +49,7 @@ void	print_result(s_stack *stack, s_data data)
 	}
 	printf("A_size : %d\nB_size : %d\nOperations : %d\n",data.A_size, data.B_size, data.operations);
 }
+
 int main (int argc, char **argv)
 {
 	s_stack	*stack_A;
@@ -41,11 +66,15 @@ int main (int argc, char **argv)
 		ptr = ft_split(argv[1], 32);
 		while (ptr[count])
 			count++;
+		if(check_errors(count + 1, ptr, -1) == -1)
+			return (0);
 		create_data(&data, count + 1);
 		create_linklist(&stack_A, count + 1, ptr, &data);
 	}
 	else
 	{
+		if (check_errors(argc, argv, 0) == -1)
+			return (0);
 		create_data(&data, argc);
 		create_linklist(&stack_A, argc, argv + 1, &data);
 	}
