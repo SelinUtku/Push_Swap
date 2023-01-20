@@ -36,7 +36,7 @@ void	is_duplicate(s_stack *stack)
 		iter = stack -> next;
 		while (iter)
 		{
-			if(iter -> value == stack -> value)
+			if (iter -> value == stack -> value)
 			{
 				printf("Error : Duplicate elements\n");
 				break;
@@ -46,3 +46,13 @@ void	is_duplicate(s_stack *stack)
 		stack = stack -> next;
 	}
 }
+
+// int	is_duplicate_arr(char **argv)
+// {
+// 	char *ptr;
+// 	int i;
+// 	int	j;
+
+
+// 	return (0);
+// }

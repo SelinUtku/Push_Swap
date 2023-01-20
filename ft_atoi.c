@@ -12,11 +12,11 @@
 
 #include "push_swap.h"
 
-int	ft_atoi(char *str, s_data **data)
+long int	ft_atoi(char *str)
 {
 	int	i;
-	int	sign;
-	long int	result;
+	long int	sign;
+	long int result;
 
 	i = 0;
 	sign = 1;
@@ -32,11 +32,11 @@ int	ft_atoi(char *str, s_data **data)
 		result = (result * 10) + str[i] - 48;
 		i++;
 	}
-	if ((sign * result) >= INT32_MIN && (sign * result <= INT32_MAX))
+	// if ((sign * result) >= INT32_MIN && (sign * result <= INT32_MAX))
 		return (sign * result);
-	else
-	{
-		(*data) -> flag = 0;
-		return (sign * result);
-	}
+	// else
+	// {
+	// 	(*data) -> flag = 0;
+	// 	return (sign * result);
+	// }
 }
