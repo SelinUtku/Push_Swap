@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 22:25:28 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/18 22:35:57 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/20 23:01:53 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ long int	ft_atoi(char *str)
 {
 	int	i;
 	long int	sign;
-	long int result;
+	long int	result;
 
 	i = 0;
 	sign = 1;
@@ -32,11 +32,5 @@ long int	ft_atoi(char *str)
 		result = (result * 10) + str[i] - 48;
 		i++;
 	}
-	// if ((sign * result) >= INT32_MIN && (sign * result <= INT32_MAX))
-		return (sign * result);
-	// else
-	// {
-	// 	(*data) -> flag = 0;
-	// 	return (sign * result);
-	// }
+	return (sign * result);
 }

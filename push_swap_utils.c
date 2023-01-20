@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:44:17 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/18 23:26:56 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/20 20:37:55 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,16 @@ void	delete_ll(s_stack **stack)
 }
 void	create_linklist(s_stack **stack,int argc, char **argv, s_data *data)
 {
-	s_stack	*first;
 	s_stack	*last;
 	int	i;
 	
 	i = 0;
-	first = *stack;
-	first -> value = ft_atoi(argv[0]);
-	first -> next = NULL;
-	(*stack) = first;
-	last = first;
+	(*stack) -> value = ft_atoi(argv[0]);
+	(*stack) -> next = NULL;
+	last = (*stack);
 	while (++i < argc - 1)
 	{
+		//malloc protection !
 		s_stack	*tmp;
 		tmp = malloc (sizeof(s_stack));
 		tmp -> value = ft_atoi(argv[i]);

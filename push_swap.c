@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:01:48 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/18 22:46:40 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/20 23:05:34 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,23 @@ int	check_errors(int argc, char **argv, int flag)
 	i = 0;
 	if (flag == -1)
 		i = -1;
-	while (++i < argc - 1)
+	while (++i < argc)
 	{
 		if (ft_atoi(argv[i]) < INT32_MIN || ft_atoi(argv[i]) > INT32_MAX)
 		{
 			printf("Error : Not Int");
 			return (-1);
 		}
-		if (is_duplicate_arr(argv[i]) == -1)
+		if (is_integer(argv[i]) == -1)
 		{
-			printf("Error : Duplicate");
+			printf("Error : there is character");
 			return (-1);
 		}
-		
+	}
+	if (is_duplicate_arr(argv, flag) == -1)
+	{
+		printf("Error : Duplicate");
+		return (-1);
 	}
 	return (0);
 }

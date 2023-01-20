@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 23:13:02 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/18 23:13:44 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/20 19:57:56 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,38 @@ void	is_duplicate(s_stack *stack)
 	}
 }
 
-// int	is_duplicate_arr(char **argv)
-// {
-// 	char *ptr;
-// 	int i;
-// 	int	j;
+int	is_duplicate_arr(char **argv, int flag)
+{
+	int	i;
+	int	j;
+	
+	i = 0;
+	if (flag == -1)
+		i = -1;
+	while(argv[++i]!= NULL)
+	{
+		j = i + 1;
+		while(argv[j] != NULL)
+		{
+			if (ft_atoi(argv[i]) == ft_atoi(argv[j++]))
+				return (-1);
+		}
+	}
+	return (0);
+}
 
+int	is_integer(char *str)
+{
+	int	i;
 
-// 	return (0);
-// }
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i] != '\0')
+	{
+		if (str[i] < '0' || str[i] > '9')
+			return (-1);
+		i++;
+	}
+	return (0);
+}
