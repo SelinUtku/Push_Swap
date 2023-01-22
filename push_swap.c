@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:01:48 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/20 23:05:34 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/22 22:43:16 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int main (int argc, char **argv)
 		ptr = ft_split(argv[1], 32);
 		while (ptr[count])
 			count++;
-		if(check_errors(count + 1, ptr, -1) == -1)
+		if(check_errors(count, ptr, -1) == -1)
 			return (0);
 		create_data(&data, count + 1);
 		create_linklist(&stack_A, count + 1, ptr, &data);
@@ -93,11 +93,12 @@ int main (int argc, char **argv)
 	// rev_rotate_ab(&stack_A, &stack_B, &data);
 	// find_max_a(stack_A, &data);
 	// find_max_b(stack_B, &data);
-	print_result(stack_A, data);
+	// print_result(stack_A, data);
 	// print_result(stack_B, data);
 	// if ((is_a_sorted(stack_A) == 1))
 	// 	printf("A is sorted !!");
 	// is_duplicate(stack_A);
+	create_new_array(argc, argv);
 	return (0);
 }
 // !!! Asil linklisti ilerletmek yerine her zaman kopyasini kullan !

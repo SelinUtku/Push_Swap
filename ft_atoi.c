@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 22:25:28 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/20 23:01:53 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/22 15:44:04 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@ long int	ft_atoi(char *str)
 	int	i;
 	long int	sign;
 	long int	result;
+	int	control;
 
 	i = 0;
 	sign = 1;
 	result = 0;
+	control = 0;
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;
 	if (str[i] == '-')
@@ -31,6 +33,9 @@ long int	ft_atoi(char *str)
 	{
 		result = (result * 10) + str[i] - 48;
 		i++;
+		control = 1;
 	}
+	if (result == 0 && control == 0)
+		return(sign);
 	return (sign * result);
 }
