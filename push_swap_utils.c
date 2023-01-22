@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:44:17 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/20 20:37:55 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/22 23:59:12 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,5 @@ void	create_data(s_data *data, int argc)
 	data -> max_A = INT32_MIN;
 	data -> min_B = INT32_MAX;
 	data -> max_B = INT32_MIN;
-	data -> flag = 1;
 }
 

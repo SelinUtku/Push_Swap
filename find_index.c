@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_a.c                                           :+:      :+:    :+:   */
+/*   find_index.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 15:45:49 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/22 23:40:41 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/23 00:03:48 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	create_new_array(int argc, char **argv)
+void	find_index(int argc, char **argv)
 {
 	int	*new;
 	int	i;
 	int	j;
 	int	small;
 // for norminette fix the code
+// fix the code according to if argc = 2 
 	i = 0;
 	new = malloc(sizeof(int) * argc - 1);
 	if (!new)
@@ -40,8 +41,8 @@ void	create_new_array(int argc, char **argv)
 		}
 		new[i] = small;
 	}
-// i = 0;
-// while (i < argc - 1)
-// 	printf("%d ", new[i++]);
+i = 0;
+while (i < argc - 1)
+	printf("%d ", new[i++]);
 }
 

@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:02:23 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/22 17:30:18 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/23 00:00:02 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	**ft_split(char const *s, char c);
 void	is_duplicate(s_stack *stack);
 int		is_duplicate_arr(char **argv, int flag);
 int		is_integer(char *str);
-void	create_new_array(int argc, char **argv);
+void	find_index(int argc, char **argv);
 // Push Swap Operations
 void	swap_a(s_stack **stack_A, s_data *data);
 void	swap_b(s_stack **stack_B, s_data *data);

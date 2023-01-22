@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:01:48 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/22 22:43:16 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/23 00:03:21 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int main (int argc, char **argv)
 	// if ((is_a_sorted(stack_A) == 1))
 	// 	printf("A is sorted !!");
 	// is_duplicate(stack_A);
-	create_new_array(argc, argv);
+	find_index(argc, argv);
 	return (0);
 }
 // !!! Asil linklisti ilerletmek yerine her zaman kopyasini kullan !
