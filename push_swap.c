@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:01:48 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/23 00:03:21 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/23 22:45:35 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 int	check_errors(int argc, char **argv, int flag)
 {
 	int i;
-
 	i = 0;
 	if (flag == -1)
 		i = -1;
@@ -35,11 +34,11 @@ int	check_errors(int argc, char **argv, int flag)
 			printf("Error : there is character");
 			return (-1);
 		}
-	}
-	if (is_duplicate_arr(argv, flag) == -1)
-	{
-		printf("Error : Duplicate");
-		return (-1);
+		if (is_duplicate_arr(argv + i) == -1)
+		{
+			printf("Error : Duplicate");
+			return (-1);
+		}
 	}
 	return (0);
 }
@@ -70,7 +69,7 @@ int main (int argc, char **argv)
 		ptr = ft_split(argv[1], 32);
 		while (ptr[count])
 			count++;
-		if(check_errors(count, ptr, -1) == -1)
+		if(check_errors(count + 1, ptr, -1) == -1)
 			return (0);
 		create_data(&data, count + 1);
 		create_linklist(&stack_A, count + 1, ptr, &data);
