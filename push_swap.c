@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:01:48 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/25 03:09:01 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/25 18:16:07 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,8 @@ int main (int argc, char **argv)
 	// 	printf("%d", index[count]);
 	// push_swap(&stack_A);
 	// swap_a(&stack_A, &data);
-	// push_b(&stack_A, &stack_B, &data);
-	// push_b(&stack_A, &stack_B, &data);
+	push_b(&stack_A, &stack_B, &data);
+	push_b(&stack_A, &stack_B, &data);
 	// push_b(&stack_A, &stack_B, &data);
 	// swap_ab(&stack_A, &stack_B, &data);
 	// rev_rotate_a(&stack_A, &data);
@@ -107,7 +107,7 @@ int main (int argc, char **argv)
 	// if ((is_a_sorted(stack_A) == 1))
 	// 	printf("A is sorted !!");
 	// is_duplicate(stack_A);
-	find_median(stack_A, &data, index);
+	printf("%d ",find_index_inA(stack_A, stack_B));
 	return (0);
 }
 // !!! Asil linklisti ilerletmek yerine her zaman kopyasini kullan !
