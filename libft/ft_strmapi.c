@@ -1,43 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_index.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/22 15:45:49 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/25 00:29:57 by sutku            ###   ########.fr       */
+/*   Created: 2022/10/22 03:06:01 by sutku             #+#    #+#             */
+/*   Updated: 2022/10/22 03:38:39 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	*find_index(int argc, char **argv)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int	*new;
-	int	i;
-	int	j;
-	int	small;
+	unsigned int	i;
+	char			*arr;
+	int				len;
 
 	i = 0;
-	new = malloc(sizeof(int) * (argc - 1));
-	if (!new)
+	if (!s)
 		return (NULL);
-	while (i < argc - 1)
-		new[i++] = 0;
-	i = -1;
-	while (argv[++i] != NULL)
+	len = ft_strlen(s);
+	arr = malloc((len + 1) * sizeof(char));
+	if (!arr)
+		return (NULL);
+	while (s[i] != '\0')
 	{
-		j = -1;
-		small = 0;
-		while (++j < i)
-		{
-			if (long_atoi(argv[j]) < long_atoi(argv[i]))
-				small++;
-			else if (long_atoi(argv[j]) > long_atoi(argv[i]))
-				new[j]++;
-		}
-		new[i] = small;
+		arr[i] = (*f)(i, s[i]);
+		i++;
 	}
-	return (new);
+	arr[i] = '\0';
+	return (arr);
 }

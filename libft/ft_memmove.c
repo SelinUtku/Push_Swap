@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/18 22:25:28 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/23 22:26:17 by sutku            ###   ########.fr       */
+/*   Created: 2022/10/22 03:42:20 by sutku             #+#    #+#             */
+/*   Updated: 2022/10/26 01:05:15 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-long int	ft_atoi(char *str)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	int	i;
-	long int	sign;
-	long int	result;
+	char			*n_dst;
+	char			*n_src;
+	size_t			i;
 
+	n_dst = (char *)dst;
+	n_src = (char *)src;
 	i = 0;
-	sign = 1;
-	result = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-		i++;
-	if (str[i] == '-')
-		sign = -1;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
+	if (!n_dst && !n_src)
+		return (NULL);
+	if (n_dst < n_src)
 	{
-		result = (result * 10) + str[i] - 48;
-		i++;
+		while (i < len)
+		{
+			n_dst[i] = n_src[i];
+			i++;
+		}
+		return (dst);
 	}
-	return (sign * result);
+	while (len > 0)
+	{
+		n_dst[len - 1] = n_src[len - 1];
+		len--;
+	}
+	return (dst);
 }

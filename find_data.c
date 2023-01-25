@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 20:43:21 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/18 19:39:55 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/25 03:13:38 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,21 @@ void	find_max_b(s_stack *stack, s_data *data)
 		stack = stack -> next;
 	}
 	printf("max_a = %d ", data -> max_B);
+}
+
+void	find_median(s_stack *stack, s_data *data, int *index)
+{
+	int	i;
+
+	i = -1;
+	while (++i < data -> A_size)
+	{
+		if (index[i] == data -> A_size / 2)
+		{
+			data -> median = stack -> value;
+			printf("%d ", data -> median);
+			return;
+		}
+		stack = stack -> next;
+	}
 }

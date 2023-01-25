@@ -1,43 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_index.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/22 15:45:49 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/25 00:29:57 by sutku            ###   ########.fr       */
+/*   Created: 2022/10/19 23:37:15 by sutku             #+#    #+#             */
+/*   Updated: 2022/10/22 01:41:13 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	*find_index(int argc, char **argv)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	int	*new;
-	int	i;
-	int	j;
-	int	small;
+	char			*arr;
+	size_t			i;
+	size_t			len_s;
 
 	i = 0;
-	new = malloc(sizeof(int) * (argc - 1));
-	if (!new)
+	if (!s)
 		return (NULL);
-	while (i < argc - 1)
-		new[i++] = 0;
-	i = -1;
-	while (argv[++i] != NULL)
+	len_s = ft_strlen(s);
+	if (start > len_s)
+		len = 0;
+	if (len_s - start <= len)
+		len = len_s - start;
+	arr = malloc((len + 1) * sizeof(char));
+	if (!arr)
+		return (NULL);
+	while (i < len && s[start + i] != '\0')
 	{
-		j = -1;
-		small = 0;
-		while (++j < i)
-		{
-			if (long_atoi(argv[j]) < long_atoi(argv[i]))
-				small++;
-			else if (long_atoi(argv[j]) > long_atoi(argv[i]))
-				new[j]++;
-		}
-		new[i] = small;
+		arr[i] = s[start + i];
+		i++;
 	}
-	return (new);
+	arr[i] = '\0';
+	return (arr);
 }
