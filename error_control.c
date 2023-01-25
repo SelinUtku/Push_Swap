@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 23:13:02 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/23 22:36:31 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/24 18:06:10 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ int	is_duplicate_arr(char **argv)
 	int num;
 
 	i = 1;
-	num = ft_atoi(argv[0]);
+	num = long_atoi(argv[0]);
 	while (argv[i] != NULL)
 	{
-		if (num == ft_atoi(argv[i++]))
+		if (num == long_atoi(argv[i++]))
 			return (-1);
 	}
 	return (0);

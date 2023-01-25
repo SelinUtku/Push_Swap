@@ -1,43 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_index.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/22 15:45:49 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/25 00:29:57 by sutku            ###   ########.fr       */
+/*   Created: 2022/10/25 20:39:58 by sutku             #+#    #+#             */
+/*   Updated: 2022/10/25 23:17:46 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	*find_index(int argc, char **argv)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	int	*new;
-	int	i;
-	int	j;
-	int	small;
+	t_list	*ptr;
+	t_list	*arr;
+	t_list	*head;
 
-	i = 0;
-	new = malloc(sizeof(int) * (argc - 1));
-	if (!new)
+	if (!lst || !f || !del)
 		return (NULL);
-	while (i < argc - 1)
-		new[i++] = 0;
-	i = -1;
-	while (argv[++i] != NULL)
+	ptr = lst;
+	head = NULL;
+	while (ptr)
 	{
-		j = -1;
-		small = 0;
-		while (++j < i)
+		arr = malloc(sizeof(t_list));
+		if (!arr)
 		{
-			if (long_atoi(argv[j]) < long_atoi(argv[i]))
-				small++;
-			else if (long_atoi(argv[j]) > long_atoi(argv[i]))
-				new[j]++;
+			ft_lstclear(&head, del);
+			return (NULL);
 		}
-		new[i] = small;
+		arr->content = (*f)(ptr->content);
+		arr->next = NULL;
+		ft_lstadd_back(&head, arr);
+		ptr = ptr->next;
 	}
-	return (new);
+	return (head);
 }

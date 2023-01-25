@@ -6,11 +6,11 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 05:38:49 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/18 18:16:11 by sutku            ###   ########.fr       */
+/*   Updated: 2022/10/24 03:51:12 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
 static unsigned int	word_len(char const *s, unsigned int i, char c)
 {

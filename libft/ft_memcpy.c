@@ -1,43 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_index.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/22 15:45:49 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/25 00:29:57 by sutku            ###   ########.fr       */
+/*   Created: 2022/10/17 05:38:10 by sutku             #+#    #+#             */
+/*   Updated: 2022/10/26 01:04:46 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	*find_index(int argc, char **argv)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	int	*new;
-	int	i;
-	int	j;
-	int	small;
+	char			*n_dst;
+	char			*n_src;
+	size_t			i;
 
+	n_dst = (char *)dst;
+	n_src = (char *)src;
 	i = 0;
-	new = malloc(sizeof(int) * (argc - 1));
-	if (!new)
+	if (!n_dst && !n_src)
 		return (NULL);
-	while (i < argc - 1)
-		new[i++] = 0;
-	i = -1;
-	while (argv[++i] != NULL)
+	while (i < n)
 	{
-		j = -1;
-		small = 0;
-		while (++j < i)
-		{
-			if (long_atoi(argv[j]) < long_atoi(argv[i]))
-				small++;
-			else if (long_atoi(argv[j]) > long_atoi(argv[i]))
-				new[j]++;
-		}
-		new[i] = small;
+		n_dst[i] = n_src[i];
+		i++;
 	}
-	return (new);
+	return (dst);
 }

@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:44:17 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/22 23:59:12 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/25 03:04:38 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	delete_ll(s_stack **stack)
 		free(first);
 	}	
 }
-void	create_linklist(s_stack **stack,int argc, char **argv, s_data *data)
+void	create_linklist(s_stack **stack,int argc, char **argv)
 {
 	s_stack	*last;
 	int	i;
@@ -54,5 +54,6 @@ void	create_data(s_data *data, int argc)
 	data -> max_A = INT32_MIN;
 	data -> min_B = INT32_MAX;
 	data -> max_B = INT32_MIN;
+	data -> median = 0;
 }
 
