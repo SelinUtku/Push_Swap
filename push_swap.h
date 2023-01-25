@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:02:23 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/25 03:08:05 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/25 18:17:41 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ void	is_duplicate(s_stack *stack);
 int		is_duplicate_arr(char **argv);
 int		is_integer(char *str);
 void	*find_index(int argc, char **argv);
+int		find_index_inA(s_stack  *stack_a, s_stack *stack_b);
+
+
 // Push Swap Operations
 void	swap_a(s_stack **stack_A, s_data *data);
 void	swap_b(s_stack **stack_B, s_data *data);
