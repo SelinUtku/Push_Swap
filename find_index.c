@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 15:45:49 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/25 18:20:19 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/26 18:32:10 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,23 @@ void	*find_index(int argc, char **argv)
 	return (new);
 }
 
-int	find_index_inA(s_stack  *stack_a, s_stack *stack_b)
+int	find_index_inA(s_stack  **stack_a, s_stack **stack_b)
 {
+	s_stack *a;
+	s_stack	*b;
 	int	index;
 
+	a = *stack_a;
+	b = *stack_b;
 	index = 0;
-	while (stack_a -> next != NULL)
+	if (b -> value > a -> value && a -> next == NULL)
+		return (1);
+	while (a -> next != NULL)
 	{
-		if (stack_b -> value > stack_a -> value && stack_b -> value < stack_a -> next -> value)
+		if (b -> value > a -> value && b -> value < a -> next -> value)
 			return (index + 1);
 		index++;
-		stack_a = stack_a -> next;
+		a = a -> next;
 	}
 	return(0);
 }

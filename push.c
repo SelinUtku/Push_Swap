@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:01:00 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/15 16:14:24 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/26 18:17:01 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	push_b(s_stack **stack_A, s_stack **stack_B, s_data *data)
 			data -> A_size--;
 			data -> B_size++;
 		}
+		printf("pb\n");
 	}
 }
 // (pa) Take the first element at the top of B and put it at the top of A.
@@ -66,5 +67,6 @@ void	push_a(s_stack **stack_A, s_stack **stack_B, s_data *data)
 			data -> B_size--;
 			data -> A_size++;
 		}
+		printf("pa\n");
 	}
 }

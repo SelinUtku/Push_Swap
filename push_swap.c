@@ -6,16 +6,25 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:01:48 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/25 18:16:07 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/26 18:45:47 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// void	push_swap(s_stack **stack)
-// {
-	
-// }
+void	push_swap(s_stack **stack_a, s_stack **stack_b, s_data *data)
+{
+	find_min_a(*stack_a, data);
+// except min element, push all others to stack B.
+	while (data -> A_size > 1)
+	{
+		if ((*stack_a) -> value != data -> min_A)
+			push_b(stack_a, stack_b, data);
+		else
+			rotate_a(stack_a, data);
+	}
+	printf("%d ",find_index_inA(stack_a, stack_b));
+}
 int	check_errors(int argc, char **argv)
 {
 	int i;
@@ -42,12 +51,22 @@ int	check_errors(int argc, char **argv)
 	return (0);
 }
 
-void	print_result(s_stack *stack, s_data data)
+void	print_result(s_stack *stack_a, s_stack *stack_b, s_data data)
 {
-	while (stack)
+	printf("\n");
+	while (stack_a || stack_b)
 	{	
-		printf("%d\n", stack-> value);
-		stack = stack -> next;
+		if (stack_a)
+		{	printf("%d", stack_a-> value);
+			stack_a = stack_a -> next;
+		}
+		printf("\t");
+		if (stack_b)
+		{
+			printf("%d", stack_b-> value);
+			stack_b = stack_b -> next;
+		}
+		printf("\n");
 	}
 	printf("A_size : %d\nB_size : %d\nOperations : %d\n",data.A_size, data.B_size, data.operations);
 }
@@ -84,6 +103,7 @@ int main (int argc, char **argv)
 		create_data(&data, argc);
 		create_linklist(&stack_A, argc, argv + 1);
 	}
+	push_swap(&stack_A, &stack_B, &data);
 	// count = 0;
 	// while (count < argc -1)
 	// 	printf("%d ", index[count++]);
@@ -93,8 +113,8 @@ int main (int argc, char **argv)
 	// 	printf("%d", index[count]);
 	// push_swap(&stack_A);
 	// swap_a(&stack_A, &data);
-	push_b(&stack_A, &stack_B, &data);
-	push_b(&stack_A, &stack_B, &data);
+	// push_b(&stack_A, &stack_B, &data);
+	// push_b(&stack_A, &stack_B, &data);
 	// push_b(&stack_A, &stack_B, &data);
 	// swap_ab(&stack_A, &stack_B, &data);
 	// rev_rotate_a(&stack_A, &data);
@@ -102,12 +122,12 @@ int main (int argc, char **argv)
 	// rev_rotate_ab(&stack_A, &stack_B, &data);
 	// find_max_a(stack_A, &data);
 	// find_max_b(stack_B, &data);
-	// print_result(stack_A, data);
-	// print_result(stack_B, data);
+	print_result(stack_A, stack_B, data);
+
 	// if ((is_a_sorted(stack_A) == 1))
 	// 	printf("A is sorted !!");
 	// is_duplicate(stack_A);
-	printf("%d ",find_index_inA(stack_A, stack_B));
+	// printf("%d ",find_index_inA(stack_A, stack_B));
 	return (0);
 }
 // !!! Asil linklisti ilerletmek yerine her zaman kopyasini kullan !
