@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 20:43:21 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/25 04:46:02 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/26 18:12:03 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	find_min_a(s_stack *stack, s_data *data)
 			data -> min_A = stack -> value;
 		stack = stack -> next;
 	}
-	printf("min_a = %d ", data -> min_A);
 }
 
 void	find_min_b(s_stack *stack, s_data *data)
