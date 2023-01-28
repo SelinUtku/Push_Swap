@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:02:23 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/26 18:25:35 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/27 18:05:46 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,19 @@ void	create_linklist(s_stack **stack,int argc, char **argv);
 void	create_data(s_data *data, int argc);
 long int		long_atoi(char *str);
 // void	push_swap(s_stack **stack_x);
-void	find_min_a(s_stack *stack, s_data *data);
-void	find_min_b(s_stack *stack, s_data *data);
-void	find_max_a(s_stack *stack, s_data *data);
-void	find_max_b(s_stack *stack, s_data *data);
+void	find_data_a(s_stack *stack, s_data *data);
+// void	find_min_b(s_stack *stack, s_data *data);
+// void	find_max_b(s_stack *stack, s_data *data);
 void	find_median(s_stack *stack, s_data *data, int *index);
-int		is_a_sorted(s_stack *stack_A);
 char	**ft_split(char const *s, char c);
 void	is_duplicate(s_stack *stack);
 int		is_duplicate_arr(char **argv);
 int		is_integer(char *str);
 void	*find_index(int argc, char **argv);
 int		find_index_inA(s_stack  **stack_a, s_stack **stack_b);
+int		is_sorted_a(s_stack *stack);
+void	three_number(s_stack **stack, s_data *data);
+int		min_index(s_stack *stack, s_data *data);
 
 
 // Push Swap Operations

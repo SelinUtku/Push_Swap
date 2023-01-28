@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:44:17 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/25 03:04:38 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/27 18:17:52 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,13 @@ void	delete_ll(s_stack **stack)
 		free(first);
 	}	
 }
+
 void	create_linklist(s_stack **stack,int argc, char **argv)
 {
 	s_stack	*last;
 	int	i;
 	
+	*stack = (s_stack *)malloc(sizeof(s_stack));
 	i = 0;
 	(*stack) -> value = ft_atoi(argv[0]);
 	(*stack) -> next = NULL;
@@ -57,3 +59,21 @@ void	create_data(s_data *data, int argc)
 	data -> median = 0;
 }
 
+void	three_number(s_stack **stack, s_data *data)
+{
+	int a;
+
+	while (*stack && min_index(*stack, data) != 0 && is_sorted_a(*stack) == -1)
+	{
+		a = min_index(*stack, data);
+		if (a <= (data->A_size / 2))
+			rotate_a(stack, data);
+		else
+			rev_rotate_a(stack, data);
+	}
+	if (*stack && is_sorted_a(*stack) == -1)
+	{
+		swap_a(stack, data);
+		rotate_a(stack, data);
+	}
+}

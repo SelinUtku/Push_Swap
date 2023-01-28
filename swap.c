@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:55:23 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/15 18:03:53 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/27 16:02:48 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	swap_a(s_stack **stack_A, s_data *data)
 		second -> value = value1;
 		data -> operations++;
 	}
+	printf("sa\n");
 }
 // (sb) Swap the first 2 elements at the top of stack B.
 void	swap_b(s_stack **stack_B, s_data *data)
