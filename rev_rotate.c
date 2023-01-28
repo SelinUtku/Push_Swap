@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:01:03 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/15 18:28:12 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/27 22:20:03 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	rev_rotate_a(s_stack **stack_A, s_data *data)
 		tmp -> next = NULL;
 		data -> operations++;
 	}
+	printf("rra\n");
 }
 // (rrb) Shift down all elements of stack B by 1. The last element becomes the first one.
 void	rev_rotate_b(s_stack **stack_B, s_data *data)
@@ -52,6 +53,7 @@ void	rev_rotate_b(s_stack **stack_B, s_data *data)
 		tmp -> next = NULL;
 		data -> operations++;
 	}
+	printf("rrb\n");
 }
 // rra and rrb at the same time.
 void	rev_rotate_ab(s_stack **stack_A, s_stack **stack_B, s_data *data)
@@ -83,4 +85,5 @@ void	rev_rotate_ab(s_stack **stack_A, s_stack **stack_B, s_data *data)
 		tmp -> next = NULL;
 		data -> operations++;
 	}
+	printf("rrr\n");
 }

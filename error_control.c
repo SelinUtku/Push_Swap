@@ -6,25 +6,21 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 23:13:02 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/24 18:06:10 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/27 16:01:37 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_a_sorted(s_stack *stack_A)
+int	is_sorted_a(s_stack *stack)
 {
-	s_stack	*iter;
-
-	iter = stack_A -> next;
-	while(iter)
+	while (stack -> next != NULL)
 	{
-		if (iter -> value < stack_A -> value)
-			return (0);
-		iter = iter -> next;
-		stack_A = stack_A -> next;
+		if (stack -> value > stack -> next -> value)
+			return (-1);
+		stack = stack -> next;
 	}
-	return (1);
+	return (0);
 }
 
 void	is_duplicate(s_stack *stack)
