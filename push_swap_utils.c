@@ -6,16 +6,16 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:44:17 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/30 02:51:34 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/30 18:44:22 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 
-void	delete_ll(s_stack **stack)
+void	delete_ll(t_stack **stack)
 {
-	s_stack *first;
+	t_stack *first;
 
 	while((*stack))
 	{
@@ -25,21 +25,22 @@ void	delete_ll(s_stack **stack)
 	}	
 }
 
-void	create_linklist(s_stack **stack,int argc, char **argv)
+void	create_linklist(t_stack **stack,int argc, char **argv)
 {
-	s_stack	*last;
+	t_stack	*last;
 	int	i;
 	
-	*stack = (s_stack *)malloc(sizeof(s_stack));
+	*stack = (t_stack *)malloc(sizeof(t_stack));
 	i = 0;
 	(*stack) -> value = ft_atoi(argv[0]);
 	(*stack) -> next = NULL;
 	last = (*stack);
 	while (++i < argc - 1)
 	{
-		//malloc protection !
-		s_stack	*tmp;
-		tmp = malloc (sizeof(s_stack));
+		t_stack	*tmp;
+		tmp = malloc (sizeof(t_stack));
+		if (!tmp)
+			return;
 		tmp -> value = ft_atoi(argv[i]);
 		tmp -> next = NULL;
 		last -> next = tmp;
@@ -47,7 +48,7 @@ void	create_linklist(s_stack **stack,int argc, char **argv)
 	}
 }
 
-void	create_data(s_data *data, t_costs *cost, int argc)
+void	create_data(t_data *data, t_costs *cost, int argc)
 {
 	data -> A_size = argc - 1;
 	data -> B_size = 0;
@@ -65,7 +66,7 @@ void	create_data(s_data *data, t_costs *cost, int argc)
 	
 }
 
-void	three_number(s_stack **stack, s_data *data)
+void	three_number(t_stack **stack, t_data *data)
 {
 	int a;
 
@@ -84,7 +85,7 @@ void	three_number(s_stack **stack, s_data *data)
 	}
 }
 
-void	shortest_way(s_stack *stack_a, s_stack *stack_b, s_data *data, t_costs *cost)
+void	shortest_way(t_stack *stack_a, t_stack *stack_b, t_data *data, t_costs *cost)
 {
 	int	*op;
 	int	num;
@@ -96,7 +97,7 @@ void	shortest_way(s_stack *stack_a, s_stack *stack_b, s_data *data, t_costs *cos
 	op = (int *)malloc(sizeof(int) * 4);
 	while (i < data -> B_size)
 	{
-		num = find_index_inA(&stack_a, &stack_b);
+		num = find_index_inA(&stack_a, &stack_b, data);
 		op[0] = num;//ra
 		op[1] = data -> A_size - num;//rra
 		op[2] = i;//rb

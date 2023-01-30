@@ -6,13 +6,13 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 23:13:02 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/27 16:01:37 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/30 17:31:05 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_sorted_a(s_stack *stack)
+int	is_sorted_a(t_stack *stack)
 {
 	while (stack -> next != NULL)
 	{
@@ -23,9 +23,9 @@ int	is_sorted_a(s_stack *stack)
 	return (0);
 }
 
-void	is_duplicate(s_stack *stack)
+void	is_duplicate(t_stack *stack)
 {
-	s_stack *iter;
+	t_stack *iter;
 	
 	while (stack)
 	{
@@ -34,7 +34,7 @@ void	is_duplicate(s_stack *stack)
 		{
 			if (iter -> value == stack -> value)
 			{
-				printf("Error : Duplicate elements\n");
+				ft_printf("Error\n");
 				break;
 			}
 			iter = iter -> next;

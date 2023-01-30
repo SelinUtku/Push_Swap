@@ -6,17 +6,17 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:01:03 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/27 22:20:03 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/30 16:49:24 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // (rra) Shift down all elements of stack A by 1. The last element becomes the first one.
-void	rev_rotate_a(s_stack **stack_A, s_data *data)
+void	rev_rotate_a(t_stack **stack_A, t_data *data)
 {
-	s_stack *last;
-	s_stack	*tmp;
+	t_stack *last;
+	t_stack	*tmp;
 
 	last = *stack_A;
 	if (data -> A_size > 1)
@@ -31,13 +31,13 @@ void	rev_rotate_a(s_stack **stack_A, s_data *data)
 		tmp -> next = NULL;
 		data -> operations++;
 	}
-	printf("rra\n");
+	ft_printf("rra\n");
 }
 // (rrb) Shift down all elements of stack B by 1. The last element becomes the first one.
-void	rev_rotate_b(s_stack **stack_B, s_data *data)
+void	rev_rotate_b(t_stack **stack_B, t_data *data)
 {
-	s_stack *last;
-	s_stack	*tmp;
+	t_stack *last;
+	t_stack	*tmp;
 
 	last = *stack_B;
 	if (data -> B_size > 1)
@@ -53,13 +53,13 @@ void	rev_rotate_b(s_stack **stack_B, s_data *data)
 		tmp -> next = NULL;
 		data -> operations++;
 	}
-	printf("rrb\n");
+	ft_printf("rrb\n");
 }
 // rra and rrb at the same time.
-void	rev_rotate_ab(s_stack **stack_A, s_stack **stack_B, s_data *data)
+void	rev_rotate_ab(t_stack **stack_A, t_stack **stack_B, t_data *data)
 {
-	s_stack *last;
-	s_stack	*tmp;
+	t_stack *last;
+	t_stack	*tmp;
 
 	last = *stack_A;
 	if (data -> A_size > 1 && data -> B_size > 1)
@@ -85,5 +85,5 @@ void	rev_rotate_ab(s_stack **stack_A, s_stack **stack_B, s_data *data)
 		tmp -> next = NULL;
 		data -> operations++;
 	}
-	printf("rrr\n");
+	ft_printf("rrr\n");
 }

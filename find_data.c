@@ -6,15 +6,15 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 20:43:21 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/27 12:22:06 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/30 16:49:22 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	find_data_a(s_stack *stack, s_data *data)
+void	find_data_a(t_stack *stack, t_data *data)
 {
-	s_stack *ptr;
+	t_stack *ptr;
 
 	ptr = stack;
 	// Find min_a
@@ -34,29 +34,7 @@ void	find_data_a(s_stack *stack, s_data *data)
 	}
 }
 
-// void	find_min_b(s_stack *stack, s_data *data)
-// {
-// 	while (stack)
-// 	{
-// 		if (stack -> value <= data -> min_B)
-// 			data -> min_B = stack -> value;
-// 		stack = stack -> next;
-// 	}
-// 	printf("min_b = %d ", data -> min_B);
-// }
-
-// void	find_max_b(s_stack *stack, s_data *data)
-// {
-// 	while (stack)
-// 	{
-// 		if (stack -> value >= data -> max_B)
-// 			data -> max_B = stack -> value;
-// 		stack = stack -> next;
-// 	}
-// 	printf("max_a = %d ", data -> max_B);
-// }
-
-void	find_median(s_stack *stack, s_data *data, int *index)
+void	find_median(t_stack *stack, t_data *data, int *index)
 {
 	int	i;
 

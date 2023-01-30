@@ -6,16 +6,16 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:01:06 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/26 18:17:17 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/30 16:49:25 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 // (ra) Shift up all elements of stack A by 1. The first element becomes the last one.
-void	rotate_a(s_stack **stack_A, s_data *data)
+void	rotate_a(t_stack **stack_A, t_data *data)
 {
-	s_stack	*tmp;
-	s_stack	*last;
+	t_stack	*tmp;
+	t_stack	*last;
 
 	tmp = *stack_A;
 	last = *stack_A;
@@ -28,13 +28,13 @@ void	rotate_a(s_stack **stack_A, s_data *data)
 		tmp -> next = last;
 		data -> operations++;
 	}
-	printf("ra\n");
+	ft_printf("ra\n");
 }
 // (rb) Shift up all elements of stack B by 1. The first element becomes the last one.
-void	rotate_b(s_stack **stack_B, s_data *data)
+void	rotate_b(t_stack **stack_B, t_data *data)
 {
-	s_stack	*tmp;
-	s_stack	*last;
+	t_stack	*tmp;
+	t_stack	*last;
 
 	tmp = *stack_B;
 	last = *stack_B;
@@ -47,13 +47,13 @@ void	rotate_b(s_stack **stack_B, s_data *data)
 		tmp -> next = last;
 		data -> operations++;
 	}
-	printf("rb\n");
+	ft_printf("rb\n");
 }
 // (rr) ra and rb at the same time.
-void	rotate_ab(s_stack **stack_A, s_stack **stack_B, s_data *data)
+void	rotate_ab(t_stack **stack_A, t_stack **stack_B, t_data *data)
 {
-	s_stack	*tmp;
-	s_stack	*last;
+	t_stack	*tmp;
+	t_stack	*last;
 // rotate a
 	tmp = *stack_A;
 	last = *stack_A;
@@ -74,5 +74,5 @@ void	rotate_ab(s_stack **stack_A, s_stack **stack_B, s_data *data)
 		tmp -> next = last;
 		data -> operations++;
 	}
-	printf("rr\n");
+	ft_printf("rr\n");
 }

@@ -6,13 +6,13 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:19:02 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/30 03:10:29 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/30 18:23:55 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	min_index(s_stack *stack, s_data *data)
+int	min_index(t_stack *stack, t_data *data)
 {
 	int index;
 
@@ -41,27 +41,13 @@ int	find_min(int a, int b)
 	return(b);
 }
 
-void last_sort(s_stack **stack, s_data *data)
+void last_sort(t_stack **stack, t_data *data)
 {
-	s_stack *iter;
-	int	count;
-
-	iter = *stack;
-	count = 0;
-	while (iter -> value != data -> min_A)
+	while (min_index(*stack, data) != 0)
 	{
-		iter = iter -> next;
-		count++;
-	}
-	
-	if (count < data -> A_size / 2.0)
-	{
-		while (is_sorted_a(*stack) == -1)
+		if (min_index(*stack,data) < data -> A_size / 2.0)
 			rotate_a(stack, data);
-	}
-	else
-	{
-		while(is_sorted_a(*stack) == -1)
+		else
 			rev_rotate_a(stack, data);
 	}
 }
