@@ -6,7 +6,7 @@
 #    By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/24 16:45:37 by sutku             #+#    #+#              #
-#    Updated: 2023/01/27 17:19:31 by sutku            ###   ########.fr        #
+#    Updated: 2023/01/29 12:27:51 by sutku            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ PRINTF_LIB	=	ftprintf/libftprintf.a
 
 CC		= 	gcc
 RM		=   rm -f
-CFLAGS	=	-Wall -Werror -Wextra
+CFLAGS	=	-I.#-Wall -Werror -Wextra
 
 NAME	=	push_swap
 
