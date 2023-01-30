@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 15:45:49 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/26 18:32:10 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/30 01:18:18 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	find_index_inA(s_stack  **stack_a, s_stack **stack_b)
 
 	a = *stack_a;
 	b = *stack_b;
+
 	index = 0;
 	if (b -> value > a -> value && a -> next == NULL)
 		return (1);
