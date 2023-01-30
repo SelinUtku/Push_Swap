@@ -6,17 +6,17 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:55:23 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/27 16:02:48 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/30 16:49:25 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // (sa) Swap the first 2 elements at the top of stack A.
-void	swap_a(s_stack **stack_A, s_data *data)
+void	swap_a(t_stack **stack_A, t_data *data)
 {
-	s_stack *first;
-	s_stack *second;
+	t_stack *first;
+	t_stack *second;
 	int	value1;
 	int value2;
 	
@@ -31,13 +31,13 @@ void	swap_a(s_stack **stack_A, s_data *data)
 		second -> value = value1;
 		data -> operations++;
 	}
-	printf("sa\n");
+	ft_printf("sa\n");
 }
 // (sb) Swap the first 2 elements at the top of stack B.
-void	swap_b(s_stack **stack_B, s_data *data)
+void	swap_b(t_stack **stack_B, t_data *data)
 {
-	s_stack *first;
-	s_stack *second;
+	t_stack *first;
+	t_stack *second;
 	int	value1;
 	int value2;
 	if (data -> B_size > 1)
@@ -53,10 +53,10 @@ void	swap_b(s_stack **stack_B, s_data *data)
 	}
 }
 // (ss) sa and sb at the same time.
-void	swap_ab(s_stack **stack_A, s_stack **stack_B, s_data *data)
+void	swap_ab(t_stack **stack_A, t_stack **stack_B, t_data *data)
 {
-	s_stack *first;
-	s_stack *second;
+	t_stack *first;
+	t_stack *second;
 	int	value1;
 	int value2;
 

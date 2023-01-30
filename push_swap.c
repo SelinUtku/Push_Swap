@@ -6,21 +6,19 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:01:48 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/30 03:06:54 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/30 18:44:49 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_swap(s_stack **stack_a, s_stack **stack_b, s_data *data, t_costs *cost)
+void	push_swap(t_stack **stack_a, t_stack **stack_b, t_data *data, t_costs *cost)
 {
-	int num;
-
 	find_data_a(*stack_a, data);
 // except min and max element, push all others to stack B.
 	while (data -> A_size > 3)
 	{
-		if (((*stack_a) -> value != data -> min_A) && ((*stack_a) -> value != data -> max_A) && ((*stack_a) -> value != data -> median))
+		if (((*stack_a) -> value != data -> min_A) && ((*stack_a) -> value != data -> max_A))
 			push_b(stack_a, stack_b, data);
 		else
 			rotate_a(stack_a, data);
@@ -111,48 +109,48 @@ int	check_errors(int argc, char **argv)
 	{
 		if (long_atoi(argv[i]) < INT32_MIN || long_atoi(argv[i]) > INT32_MAX)
 		{
-			printf("Error : Not Int");
+			ft_printf("Error\n");
 			return (-1);
 		}
 		if (is_integer(argv[i]) == -1)
 		{
-			printf("Error : there is character");
+			ft_printf("Error\n");
 			return (-1);
 		}
 		if (is_duplicate_arr(argv + i) == -1)
 		{
-			printf("Error : Duplicate");
+			ft_printf("Error\n");
 			return (-1);
 		}
 	}
 	return (0);
 }
 
-void	print_result(s_stack *stack_a, s_stack *stack_b, s_data data)
+void	print_result(t_stack *stack_a, t_stack *stack_b, t_data data)
 {
-	printf("\nA\tB\n-\t-\n");
+	ft_printf("\nA\tB\n-\t-\n");
 	while (stack_a || stack_b)
 	{	
 		if (stack_a)
-		{	printf("%d", stack_a-> value);
+		{	ft_printf("%d", stack_a-> value);
 			stack_a = stack_a -> next;
 		}
-		printf("\t");
+		ft_printf("\t");
 		if (stack_b)
 		{
-			printf("%d", stack_b-> value);
+			ft_printf("%d", stack_b-> value);
 			stack_b = stack_b -> next;
 		}
-		printf("\n");
+		ft_printf("\n");
 	}
-	printf("A_size : %d\nB_size : %d\nOperations : %d\n",data.A_size, data.B_size, data.operations);
+	ft_printf("A_size : %d\nB_size : %d\nOperations : %d\n",data.A_size, data.B_size, data.operations);
 }
 
 int main (int argc, char **argv)
 {
-	s_stack	*stack_A;
-	s_stack	*stack_B;
-	s_data	data;
+	t_stack	*stack_A;
+	t_stack	*stack_B;
+	t_data	data;
 	t_costs cost;
 	char	**ptr;
 	int		count;
