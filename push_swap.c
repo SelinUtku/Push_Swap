@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:01:48 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/30 18:44:49 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/31 18:18:17 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@ void	push_swap(t_stack **stack_a, t_stack **stack_b, t_data *data, t_costs *cost
 // except min and max element, push all others to stack B.
 	while (data -> A_size > 3)
 	{
-		if (((*stack_a) -> value != data -> min_A) && ((*stack_a) -> value != data -> max_A))
-			push_b(stack_a, stack_b, data);
-		else
-			rotate_a(stack_a, data);
+		push_b(stack_a, stack_b, data);
+		// if (((*stack_a) -> value != data -> min_A) && ((*stack_a) -> value != data -> max_A) &&  ((*stack_a) -> value != data -> median))
+		// 	push_b(stack_a, stack_b, data);
+		// else
+		// 	rotate_a(stack_a, data);
 	}
 	if (is_sorted_a(*stack_a) != 0)
 		three_number(stack_a, data);
