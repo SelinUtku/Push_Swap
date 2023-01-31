@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:19:02 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/30 18:23:55 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/31 18:35:51 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	min_index(t_stack *stack, t_data *data)
 {
 	int index;
 
+	find_data_a(stack, data);
 	index = 0;
 	while (stack)
 	{

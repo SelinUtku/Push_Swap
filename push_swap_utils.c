@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:44:17 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/30 18:44:22 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/31 19:04:57 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,6 @@ void	create_data(t_data *data, t_costs *cost, int argc)
 	data -> operations = 0;
 	data -> min_A = INT32_MAX;
 	data -> max_A = INT32_MIN;
-	data -> min_B = INT32_MAX;
-	data -> max_B = INT32_MIN;
-	data -> median = 0;
 	cost -> shortest_op = INT32_MAX;
 	cost ->	rot_a = -1;
 	cost -> rot_b = -1;
@@ -70,13 +67,14 @@ void	three_number(t_stack **stack, t_data *data)
 {
 	int a;
 
-	while (*stack && min_index(*stack, data) != 0 && is_sorted_a(*stack) == -1)
+	a = min_index(*stack, data);
+	while (a)
 	{
-		a = min_index(*stack, data);
-		if (a < (data->A_size / 2.0))
+		if (a < (data -> A_size / 2.0))
 			rotate_a(stack, data);
 		else
 			rev_rotate_a(stack, data);
+		a = min_index(*stack, data);
 	}
 	if (*stack && is_sorted_a(*stack) == -1)
 	{
@@ -97,7 +95,7 @@ void	shortest_way(t_stack *stack_a, t_stack *stack_b, t_data *data, t_costs *cos
 	op = (int *)malloc(sizeof(int) * 4);
 	while (i < data -> B_size)
 	{
-		num = find_index_inA(&stack_a, &stack_b, data);
+		num = find_index_inA(stack_a, stack_b, data);
 		op[0] = num;//ra
 		op[1] = data -> A_size - num;//rra
 		op[2] = i;//rb

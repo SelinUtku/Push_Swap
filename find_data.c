@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 20:43:21 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/30 16:49:22 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/31 18:44:54 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	find_data_a(t_stack *stack, t_data *data)
 	t_stack *ptr;
 
 	ptr = stack;
+	data -> min_A = INT32_MAX;
 	// Find min_a
 	while (stack)
 	{
@@ -25,6 +26,7 @@ void	find_data_a(t_stack *stack, t_data *data)
 		stack = stack -> next;
 	}
 	// find max_a
+	data -> max_A = INT32_MIN;
 	stack = ptr;
 	while (stack)
 	{

@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:02:23 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/30 18:25:21 by sutku            ###   ########.fr       */
+/*   Updated: 2023/01/31 15:49:06 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	is_duplicate(t_stack *stack);
 int		is_duplicate_arr(char **argv);
 int		is_integer(char *str);
 void	*find_index(int argc, char **argv);
-int		find_index_inA(t_stack  **stack_a, t_stack **stack_b, t_data *data);
+int		find_index_inA(t_stack  *stack_a, t_stack *stack_b, t_data *data);
 int		is_sorted_a(t_stack *stack);
 void	three_number(t_stack **stack, t_data *data);
 int		min_index(t_stack *stack, t_data *data);
