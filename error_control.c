@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 23:13:02 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/30 17:31:05 by sutku            ###   ########.fr       */
+/*   Updated: 2023/02/01 11:49:00 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int	is_sorted_a(t_stack *stack)
 
 void	is_duplicate(t_stack *stack)
 {
-	t_stack *iter;
-	
+	t_stack	*iter;
+
 	while (stack)
 	{
 		iter = stack -> next;
@@ -35,7 +35,7 @@ void	is_duplicate(t_stack *stack)
 			if (iter -> value == stack -> value)
 			{
 				ft_printf("Error\n");
-				break;
+				break ;
 			}
 			iter = iter -> next;
 		}
@@ -46,7 +46,7 @@ void	is_duplicate(t_stack *stack)
 int	is_duplicate_arr(char **argv)
 {
 	int	i;
-	int num;
+	int	num;
 
 	i = 1;
 	num = long_atoi(argv[0]);
@@ -75,6 +75,6 @@ int	is_integer(char *str)
 		control = 1;
 	}
 	if (control == 0)
-		return(-1);
+		return (-1);
 	return (0);
 }

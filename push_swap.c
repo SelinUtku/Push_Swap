@@ -6,105 +6,42 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:01:48 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/31 18:18:17 by sutku            ###   ########.fr       */
+/*   Updated: 2023/02/01 18:01:41 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_swap(t_stack **stack_a, t_stack **stack_b, t_data *data, t_costs *cost)
+void	push_swap(t_stack **stack_a, t_stack **stack_b, t_data *data,
+		t_costs *cost)
 {
-	find_data_a(*stack_a, data);
-// except min and max element, push all others to stack B.
-	while (data -> A_size > 3)
-	{
+	push_c0(stack_a, stack_b, data);
+	while (data -> size_a > 3)
 		push_b(stack_a, stack_b, data);
-		// if (((*stack_a) -> value != data -> min_A) && ((*stack_a) -> value != data -> max_A) &&  ((*stack_a) -> value != data -> median))
-		// 	push_b(stack_a, stack_b, data);
-		// else
-		// 	rotate_a(stack_a, data);
-	}
 	if (is_sorted_a(*stack_a) != 0)
 		three_number(stack_a, data);
 	while (*stack_b)
 	{
 		shortest_way(*stack_a, *stack_b, data, cost);
 		if (cost -> shortest_op == find_max(cost -> rot_a, cost -> rot_b))
-		{
-			while (cost -> rot_a > 0 && cost -> rot_b > 0)
-			{
-				rotate_ab(stack_a, stack_b, data);
-				cost -> rot_a--;
-				cost -> rot_b--;
-			}
-			while (cost -> rot_a > 0)
-			{
-				rotate_a(stack_a, data);
-				cost -> rot_a--;
-			}
-			while (cost -> rot_b > 0)
-			{
-				rotate_b(stack_b, data);
-				cost -> rot_b--;
-			}
-		}
+			c1(stack_a, stack_b, data, cost);
 		else if (cost -> shortest_op == cost -> rot_a + cost -> rev_rot_b)
-		{
-			while (cost -> rot_a > 0)
-			{
-				rotate_a(stack_a, data);
-				cost -> rot_a--;
-			}
-			while (cost -> rev_rot_b > 0)
-			{
-				rev_rotate_b(stack_b, data);
-				cost -> rev_rot_b--;
-			}
-		}
+			c2(stack_a, stack_b, data, cost);
 		else if (cost -> shortest_op == cost -> rev_rot_a + cost -> rot_b)
-		{
-			while (cost -> rev_rot_a > 0)
-			{
-				rev_rotate_a(stack_a, data);
-				cost -> rev_rot_a--;
-			}
-			while (cost -> rot_b > 0)
-			{
-				rotate_b(stack_b, data);
-				cost -> rot_b--;
-			}
-		}
-		else if (cost -> shortest_op == find_max(cost -> rev_rot_a, cost -> rev_rot_b))
-		{
-			while (cost -> rev_rot_a > 0 && cost -> rev_rot_b > 0)
-			{
-				rev_rotate_ab(stack_a, stack_b, data);
-				cost -> rev_rot_a--;
-				cost -> rev_rot_b--;
-			}
-			while (cost -> rev_rot_a > 0)
-			{
-				rev_rotate_a(stack_a, data);
-				cost -> rev_rot_a--;
-			}
-			while (cost -> rev_rot_b > 0)
-			{
-				rev_rotate_b(stack_b, data);
-				cost -> rev_rot_b--;
-			}
-		}
+			c3(stack_a, stack_b, data, cost);
+		else if (cost -> shortest_op == find_max(cost -> rev_rot_a,
+				cost -> rev_rot_b))
+			c4(stack_a, stack_b, data, cost);
 		cost -> shortest_op = INT32_MAX;
 		push_a(stack_a, stack_b, data);
 	}
 	last_sort(stack_a, data);
 }
 
-
-
 int	check_errors(int argc, char **argv)
 {
-	int i;
-	
+	int	i;
+
 	i = -1;
 	while (++i < argc - 1)
 	{
@@ -127,39 +64,18 @@ int	check_errors(int argc, char **argv)
 	return (0);
 }
 
-void	print_result(t_stack *stack_a, t_stack *stack_b, t_data data)
+int	main(int argc, char **argv)
 {
-	ft_printf("\nA\tB\n-\t-\n");
-	while (stack_a || stack_b)
-	{	
-		if (stack_a)
-		{	ft_printf("%d", stack_a-> value);
-			stack_a = stack_a -> next;
-		}
-		ft_printf("\t");
-		if (stack_b)
-		{
-			ft_printf("%d", stack_b-> value);
-			stack_b = stack_b -> next;
-		}
-		ft_printf("\n");
-	}
-	ft_printf("A_size : %d\nB_size : %d\nOperations : %d\n",data.A_size, data.B_size, data.operations);
-}
-
-int main (int argc, char **argv)
-{
-	t_stack	*stack_A;
-	t_stack	*stack_B;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 	t_data	data;
-	t_costs cost;
+	t_costs	cost;
 	char	**ptr;
 	int		count;
 	int		*index;
 
-	index = NULL;
-	stack_A = NULL;
-	stack_B = NULL;
+	stack_a = NULL;
+	stack_b = NULL;
 	count = 0;
 	if (argc == 2)
 	{
@@ -170,18 +86,20 @@ int main (int argc, char **argv)
 			return (0);
 		index = find_index(count + 1, ptr);
 		create_data(&data, &cost, count + 1);
-		create_linklist(&stack_A, count + 1, ptr);
+		create_linklist(&stack_a, count + 1, ptr);
 	}
 	else if (argc > 1)
 	{
-		if (check_errors(argc, argv+1) == -1)
+		if (check_errors(argc, argv + 1) == -1)
 			return (0);
 		index = find_index(argc, argv + 1);
 		create_data(&data, &cost,argc);
-		create_linklist(&stack_A, argc, argv + 1);
+		create_linklist(&stack_a, argc, argv + 1);
 	}
-	find_median(stack_A, &data, index);
-	push_swap(&stack_A, &stack_B, &data, &cost);
-	// print_result(stack_A, stack_B, data);
+	find_median(stack_a, &data, index);
+	push_swap(&stack_a, &stack_b, &data, &cost);
+	free(index);
+	delete_ll(&stack_a);
+	delete_ll(&stack_b);
 	return (0);
 }
