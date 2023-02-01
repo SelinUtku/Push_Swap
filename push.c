@@ -6,66 +6,65 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:01:00 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/30 16:49:24 by sutku            ###   ########.fr       */
+/*   Updated: 2023/02/01 12:37:58 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// (pb) Take the first element at the top of A and put it at the top of B.
-void	push_b(t_stack **stack_A, t_stack **stack_B, t_data *data)
+void	push_b(t_stack **stack_a, t_stack **stack_b, t_data *data)
 {
-	t_stack *first_a;
-	
-	first_a = *stack_A;
-	if (data -> A_size > 0)
+	t_stack	*first_a;
+
+	first_a = *stack_a;
+	if (data -> size_a > 0)
 	{
-		if (data -> B_size == 0)
+		if (data -> size_b == 0)
 		{
-			(*stack_A) = (*stack_A) -> next;
+			(*stack_a) = (*stack_a)-> next;
 			first_a -> next = NULL;
-			(*stack_B) = first_a;
+			(*stack_b) = first_a;
 			data -> operations++;
-			data -> A_size--;
-			data -> B_size++;
+			data -> size_a--;
+			data -> size_b++;
 		}
 		else
 		{
-			(*stack_A) = (*stack_A) -> next;
-			first_a -> next = (*stack_B);
-			*stack_B = first_a;
+			(*stack_a) = (*stack_a)-> next;
+			first_a -> next = (*stack_b);
+			*stack_b = first_a;
 			data -> operations++;
-			data -> A_size--;
-			data -> B_size++;
+			data -> size_a--;
+			data -> size_b++;
 		}
 		ft_printf("pb\n");
 	}
 }
-// (pa) Take the first element at the top of B and put it at the top of A.
-void	push_a(t_stack **stack_A, t_stack **stack_B, t_data *data)
+
+void	push_a(t_stack **stack_a, t_stack **stack_b, t_data *data)
 {
-	t_stack *first_b;
-	
-	first_b = *stack_B;
-	if (data -> B_size > 0)
+	t_stack	*first_b;
+
+	first_b = *stack_b;
+	if (data -> size_b > 0)
 	{
-		if (data -> A_size == 0)
+		if (data -> size_a == 0)
 		{
-			(*stack_B) = (*stack_B) -> next;
+			(*stack_b) = (*stack_b)-> next;
 			first_b -> next = NULL;
-			(*stack_A) = first_b;
+			(*stack_a) = first_b;
 			data -> operations++;
-			data -> B_size--;
-			data -> A_size++;
+			data -> size_b--;
+			data -> size_a++;
 		}
 		else
 		{
-			(*stack_B) = (*stack_B) -> next;
-			first_b -> next = (*stack_A);
-			*stack_A = first_b;
+			(*stack_b) = (*stack_b)-> next;
+			first_b -> next = (*stack_a);
+			*stack_a = first_b;
 			data -> operations++;
-			data -> B_size--;
-			data -> A_size++;
+			data -> size_b--;
+			data -> size_a++;
 		}
 		ft_printf("pa\n");
 	}

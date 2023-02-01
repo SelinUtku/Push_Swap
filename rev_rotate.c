@@ -6,83 +6,65 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:01:03 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/30 16:49:24 by sutku            ###   ########.fr       */
+/*   Updated: 2023/02/01 17:36:57 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// (rra) Shift down all elements of stack A by 1. The last element becomes the first one.
-void	rev_rotate_a(t_stack **stack_A, t_data *data)
+void	rev_rotate_a(t_stack **stack_a, t_data *data)
 {
-	t_stack *last;
-	t_stack	*tmp;
+	t_stack	*last;
 
-	last = *stack_A;
-	if (data -> A_size > 1)
+	last = *stack_a;
+	if (data -> size_a > 1)
 	{
-		while(last -> next != NULL)
-		{
-			tmp = last;
+		while (last -> next -> next != NULL)
 			last = last -> next;
-		}
-		last -> next = *stack_A;
-		(*stack_A) = last;
-		tmp -> next = NULL;
+		last -> next -> next = *stack_a;
+		*stack_a = last -> next;
+		last -> next = NULL;
 		data -> operations++;
 	}
 	ft_printf("rra\n");
 }
-// (rrb) Shift down all elements of stack B by 1. The last element becomes the first one.
-void	rev_rotate_b(t_stack **stack_B, t_data *data)
-{
-	t_stack *last;
-	t_stack	*tmp;
 
-	last = *stack_B;
-	if (data -> B_size > 1)
+void	rev_rotate_b(t_stack **stack_b, t_data *data)
+{
+	t_stack	*last;
+
+	last = *stack_b;
+	if (data -> size_b > 1)
 	{
-		last = *stack_B;
-		while(last -> next != NULL)
-		{
-			tmp = last;
+		last = *stack_b;
+		while (last -> next -> next != NULL)
 			last = last -> next;
-		}
-		last -> next =  *stack_B;
-		(*stack_B) = last;
-		tmp -> next = NULL;
+		last -> next -> next = *stack_b;
+		*stack_b = last -> next;
+		last -> next = NULL;
 		data -> operations++;
 	}
 	ft_printf("rrb\n");
 }
-// rra and rrb at the same time.
-void	rev_rotate_ab(t_stack **stack_A, t_stack **stack_B, t_data *data)
-{
-	t_stack *last;
-	t_stack	*tmp;
 
-	last = *stack_A;
-	if (data -> A_size > 1 && data -> B_size > 1)
+void	rev_rotate_ab(t_stack **stack_a, t_stack **stack_b, t_data *data)
+{
+	t_stack	*last;
+
+	last = *stack_a;
+	if (data -> size_a > 1 && data -> size_b > 1)
 	{
-		// reverse rotate A
-		while(last -> next != NULL)
-		{
-			tmp = last;
+		while (last -> next -> next != NULL)
 			last = last -> next;
-		}
-		last -> next =  *stack_A;
-		(*stack_A) = last;
-		tmp -> next = NULL;
-		// reverse rotate B
-		last = *stack_B;
-		while(last -> next != NULL)
-		{
-			tmp = last;
+		last -> next -> next = *stack_a;
+		(*stack_a) = last -> next;
+		last -> next = NULL;
+		last = *stack_b;
+		while (last -> next -> next != NULL)
 			last = last -> next;
-		}
-		last -> next =  *stack_B;
-		(*stack_B) = last;
-		tmp -> next = NULL;
+		last -> next -> next = *stack_b;
+		*stack_b = last -> next;
+		last -> next = NULL;
 		data -> operations++;
 	}
 	ft_printf("rrr\n");

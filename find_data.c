@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 20:43:21 by sutku             #+#    #+#             */
-/*   Updated: 2023/01/31 18:44:54 by sutku            ###   ########.fr       */
+/*   Updated: 2023/02/01 18:04:28 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,31 @@
 
 void	find_data_a(t_stack *stack, t_data *data)
 {
-	t_stack *ptr;
+	t_stack	*ptr;
 
 	ptr = stack;
-	data -> min_A = INT32_MAX;
-	// Find min_a
+	data -> min_a = INT32_MAX;
 	while (stack)
 	{
-		if (stack -> value < data -> min_A)
-			data -> min_A = stack -> value;
+		if (stack -> value < data -> min_a)
+			data -> min_a = stack -> value;
 		stack = stack -> next;
 	}
-	// find max_a
-	data -> max_A = INT32_MIN;
+	data -> max_a = INT32_MIN;
 	stack = ptr;
 	while (stack)
 	{
-		if (stack -> value >= data -> max_A)
-			data -> max_A = stack -> value;
+		if (stack -> value >= data -> max_a)
+			data -> max_a = stack -> value;
 		stack = stack -> next;
 	}
 }
 
-void	find_median(t_stack *stack, t_data *data, int *index)
+void	calculate_op(int min, t_costs *cost)
 {
-	int	i;
-
-	i = -1;
-	while (++i < data -> A_size)
-	{
-		if (index[i] == data -> A_size / 2)
-		{
-			data -> median = stack -> value;
-			return;
-		}
-		stack = stack -> next;
-	}
+	cost -> shortest_op = min;
+	cost -> rot_a = cost->op[0];
+	cost -> rot_b = cost->op[2];
+	cost -> rev_rot_a = cost->op[1];
+	cost -> rev_rot_b = cost->op[3];
 }

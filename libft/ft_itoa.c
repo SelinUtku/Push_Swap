@@ -6,13 +6,13 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 05:35:41 by sutku             #+#    #+#             */
-/*   Updated: 2022/10/22 02:11:42 by sutku            ###   ########.fr       */
+/*   Updated: 2023/02/01 12:37:48 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	itoa_size(int n)
+int	itosize_a(int n)
 {
 	int	size;
 	int	sign;
@@ -45,7 +45,7 @@ char	*ft_itoa(int n)
 	long int			temp;
 
 	temp = n;
-	size = itoa_size(n);
+	size = itosize_a(n);
 	i = 1;
 	arr = malloc ((size + 1) * sizeof(char));
 	if (!arr)
