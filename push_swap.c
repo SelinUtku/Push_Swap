@@ -6,44 +6,34 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:01:48 by sutku             #+#    #+#             */
-/*   Updated: 2023/02/01 18:01:41 by sutku            ###   ########.fr       */
+/*   Updated: 2023/02/05 01:53:17 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_swap(t_stack **stack_a, t_stack **stack_b, t_data *data,
-		t_costs *cost)
+void	push_swap(t_stack **stack_a, t_stack **stack_b, int len)
 {
-	push_c0(stack_a, stack_b, data);
-	while (data -> size_a > 3)
-		push_b(stack_a, stack_b, data);
+	t_data	data;
+	t_costs	cost;
+
+	create_data(&data, &cost, len);
+	find_median_arr(*stack_a, len, &data);
+	push_c0(stack_a, stack_b, &data);
+	while (data.size_a > 3)
+		push_b(stack_a, stack_b, &data);
 	if (is_sorted_a(*stack_a) != 0)
-		three_number(stack_a, data);
-	while (*stack_b)
-	{
-		shortest_way(*stack_a, *stack_b, data, cost);
-		if (cost -> shortest_op == find_max(cost -> rot_a, cost -> rot_b))
-			c1(stack_a, stack_b, data, cost);
-		else if (cost -> shortest_op == cost -> rot_a + cost -> rev_rot_b)
-			c2(stack_a, stack_b, data, cost);
-		else if (cost -> shortest_op == cost -> rev_rot_a + cost -> rot_b)
-			c3(stack_a, stack_b, data, cost);
-		else if (cost -> shortest_op == find_max(cost -> rev_rot_a,
-				cost -> rev_rot_b))
-			c4(stack_a, stack_b, data, cost);
-		cost -> shortest_op = INT32_MAX;
-		push_a(stack_a, stack_b, data);
-	}
-	last_sort(stack_a, data);
+		three_number(stack_a, &data);
+	check_contions(stack_a, stack_b, &data, &cost);
+	last_sort(stack_a, &data);
 }
 
-int	check_errors(int argc, char **argv)
+int	check_errors(t_stack *stack, int count, char **argv, int len)
 {
 	int	i;
 
 	i = -1;
-	while (++i < argc - 1)
+	while (++i < count)
 	{
 		if (long_atoi(argv[i]) < INT32_MIN || long_atoi(argv[i]) > INT32_MAX)
 		{
@@ -51,55 +41,56 @@ int	check_errors(int argc, char **argv)
 			return (-1);
 		}
 		if (is_integer(argv[i]) == -1)
-		{
-			ft_printf("Error\n");
 			return (-1);
-		}
 		if (is_duplicate_arr(argv + i) == -1)
-		{
-			ft_printf("Error\n");
 			return (-1);
-		}
+		if (is_duplicate(stack, long_atoi(argv[i]), len) == -1)
+			return (-1);
 	}
 	return (0);
+}
+
+int	parsing(t_stack **stack_a, int argc, char **argv)
+{
+	char	**ptr;
+	int		count;
+	int		i;
+	int		len;
+
+	i = 1;
+	len = 0;
+	if (argc > 1)
+	{
+		while (i < argc)
+		{
+			ptr = ft_split(argv[i], 32);
+			count = 0;
+			while (ptr[count])
+			{
+				count++;
+				len++;
+			}
+			if (check_errors(*stack_a, count, ptr, len) == -1)
+				return (-1);
+			create_linklist(stack_a, count, ptr);
+			i++;
+		}
+	}
+	return (len);
 }
 
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	t_data	data;
-	t_costs	cost;
-	char	**ptr;
-	int		count;
-	int		*index;
+	int		len;
 
 	stack_a = NULL;
 	stack_b = NULL;
-	count = 0;
-	if (argc == 2)
-	{
-		ptr = ft_split(argv[1], 32);
-		while (ptr[count])
-			count++;
-		if(check_errors(count + 1, ptr) == -1)
-			return (0);
-		index = find_index(count + 1, ptr);
-		create_data(&data, &cost, count + 1);
-		create_linklist(&stack_a, count + 1, ptr);
-	}
-	else if (argc > 1)
-	{
-		if (check_errors(argc, argv + 1) == -1)
-			return (0);
-		index = find_index(argc, argv + 1);
-		create_data(&data, &cost,argc);
-		create_linklist(&stack_a, argc, argv + 1);
-	}
-	find_median(stack_a, &data, index);
-	push_swap(&stack_a, &stack_b, &data, &cost);
-	free(index);
+	len = parsing(&stack_a, argc, argv);
+	if (len < 1)
+		return (0);
+	push_swap(&stack_a, &stack_b, len);
 	delete_ll(&stack_a);
-	delete_ll(&stack_b);
 	return (0);
 }
