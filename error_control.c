@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 23:13:02 by sutku             #+#    #+#             */
-/*   Updated: 2023/02/01 11:49:00 by sutku            ###   ########.fr       */
+/*   Updated: 2023/02/05 01:57:16 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,21 @@ int	is_sorted_a(t_stack *stack)
 	return (0);
 }
 
-void	is_duplicate(t_stack *stack)
+int	is_duplicate(t_stack *stack, int a, int len)
 {
-	t_stack	*iter;
-
-	while (stack)
+	if (len > 1)
 	{
-		iter = stack -> next;
-		while (iter)
+		while (stack)
 		{
-			if (iter -> value == stack -> value)
+			if (stack -> value == a)
 			{
 				ft_printf("Error\n");
-				break ;
+				return (-1);
 			}
-			iter = iter -> next;
+			stack = stack -> next;
 		}
-		stack = stack -> next;
 	}
+	return (0);
 }
 
 int	is_duplicate_arr(char **argv)
@@ -53,7 +50,10 @@ int	is_duplicate_arr(char **argv)
 	while (argv[i] != NULL)
 	{
 		if (num == long_atoi(argv[i++]))
+		{
+			ft_printf("Error\n");
 			return (-1);
+		}
 	}
 	return (0);
 }
@@ -70,11 +70,17 @@ int	is_integer(char *str)
 	while (str[i] != '\0')
 	{
 		if (str[i] < '0' || str[i] > '9')
+		{
+			ft_printf("Error\n");
 			return (-1);
-		i++;
+		}
 		control = 1;
+		i++;
 	}
 	if (control == 0)
+	{
+		ft_printf("Error\n");
 		return (-1);
+	}
 	return (0);
 }

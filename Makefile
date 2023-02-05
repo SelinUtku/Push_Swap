@@ -6,14 +6,14 @@
 #    By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/24 16:45:37 by sutku             #+#    #+#              #
-#    Updated: 2023/02/01 13:00:00 by sutku            ###   ########.fr        #
+#    Updated: 2023/02/05 02:04:02 by sutku            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .SILENT:
 
 PS_SRC		=	error_control.c find_data.c find_index.c long_atoi.c push_swap_utils.c push_swap.c \
-				push.c  rev_rotate.c rotate.c swap.c utils2.c ps_conditions.c
+				push.c  rev_rotate.c rotate.c swap.c utils2.c ps_conditions.c algorithm.c
 PS_OBJ		=	$(PS_SRC:.c=.o)
 
 GNL_SRC		=	gnl/get_next_line_utils.c gnl/get_next_line.c

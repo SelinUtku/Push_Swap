@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 15:45:49 by sutku             #+#    #+#             */
-/*   Updated: 2023/02/01 12:42:35 by sutku            ###   ########.fr       */
+/*   Updated: 2023/02/05 01:45:12 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	find_index_in_a(t_stack *stack_a, t_stack *stack_b, t_data *data)
 	return (0);
 }
 
-void	*find_index(int argc, char **argv)
+void	*find_index(int argc, int *argv)
 {
 	int	*new;
 	int	i;
@@ -41,21 +41,21 @@ void	*find_index(int argc, char **argv)
 	int	small;
 
 	i = 0;
-	new = malloc(sizeof(int) * (argc - 1));
+	new = malloc(sizeof(int) * (argc));
 	if (!new)
 		return (NULL);
-	while (i < argc - 1)
+	while (i < argc)
 		new[i++] = 0;
 	i = -1;
-	while (argv[++i] != NULL)
+	while (++i < argc)
 	{
 		j = -1;
 		small = 0;
 		while (++j < i)
 		{
-			if (long_atoi(argv[j]) < long_atoi(argv[i]))
+			if (argv[j] < argv[i])
 				small++;
-			else if (long_atoi(argv[j]) > long_atoi(argv[i]))
+			else if (argv[j] > argv[i])
 				new[j]++;
 		}
 		new[i] = small;

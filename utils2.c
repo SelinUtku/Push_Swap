@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:19:02 by sutku             #+#    #+#             */
-/*   Updated: 2023/02/01 12:42:08 by sutku            ###   ########.fr       */
+/*   Updated: 2023/02/04 22:26:08 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	find_median(t_stack *stack, t_data *data, int *index)
 	int	i;
 
 	i = -1;
-	while (++i < data -> size_a)
+	while (++i < data -> size_a && stack)
 	{
 		if (index[i] == data -> size_a / 2)
 		{
