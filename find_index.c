@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 15:45:49 by sutku             #+#    #+#             */
-/*   Updated: 2023/02/05 01:45:12 by sutku            ###   ########.fr       */
+/*   Updated: 2023/02/06 12:07:21 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	find_index_in_a(t_stack *stack_a, t_stack *stack_b, t_data *data)
 	if (stack_b -> value > stack_a -> value && stack_a->next == NULL)
 		return (1);
 	if (stack_b -> value < data -> min_a || stack_b -> value > data -> max_a)
-		return (min_index(stack_a, data));
+		return (index_of_min(stack_a, data));
 	while (stack_a -> next != NULL)
 	{
 		if (stack_b -> value > stack_a -> value && stack_b -> value
@@ -33,6 +33,18 @@ int	find_index_in_a(t_stack *stack_a, t_stack *stack_b, t_data *data)
 	return (0);
 }
 
+void	put_zero(int **new, int argc)
+{
+	int	i;
+
+	i = 0;
+	while (i < argc)
+	{
+		(*new)[i] = 0;
+		i++;
+	}
+}
+
 void	*find_index(int argc, int *argv)
 {
 	int	*new;
@@ -40,12 +52,10 @@ void	*find_index(int argc, int *argv)
 	int	j;
 	int	small;
 
-	i = 0;
 	new = malloc(sizeof(int) * (argc));
 	if (!new)
 		return (NULL);
-	while (i < argc)
-		new[i++] = 0;
+	put_zero(&new, argc);
 	i = -1;
 	while (++i < argc)
 	{
@@ -61,4 +71,20 @@ void	*find_index(int argc, int *argv)
 		new[i] = small;
 	}
 	return (new);
+}
+
+int	index_of_min(t_stack *stack, t_data *data)
+{
+	int	index;
+
+	find_data_a(stack, data);
+	index = 0;
+	while (stack)
+	{
+		if (stack -> value == data -> min_a)
+			return (index);
+		index++;
+		stack = stack -> next;
+	}
+	return (-1);
 }

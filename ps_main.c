@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils2.c                                           :+:      :+:    :+:   */
+/*   ps_main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 17:19:02 by sutku             #+#    #+#             */
-/*   Updated: 2023/02/06 12:12:21 by sutku            ###   ########.fr       */
+/*   Created: 2023/02/07 14:33:22 by sutku             #+#    #+#             */
+/*   Updated: 2023/02/07 15:06:28 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_max(int a, int b)
+int	main(int argc, char **argv)
 {
-	if (a > b)
-		return (a);
-	return (b);
-}
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+	int		len;
 
-int	find_min(int a, int b)
-{
-	if (a < b)
-		return (a);
-	return (b);
+	stack_a = NULL;
+	stack_b = NULL;
+	len = parsing(&stack_a, argc, argv);
+	if (len < 1)
+		return (0);
+	push_swap(&stack_a, &stack_b, len);
+	delete_ll(&stack_a);
+	return (0);
 }

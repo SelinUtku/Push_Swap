@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils2.c                                           :+:      :+:    :+:   */
+/*   push_swap_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 17:19:02 by sutku             #+#    #+#             */
-/*   Updated: 2023/02/06 12:12:21 by sutku            ###   ########.fr       */
+/*   Created: 2023/02/06 13:18:20 by sutku             #+#    #+#             */
+/*   Updated: 2023/02/07 15:29:11 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef PUSH_SWAP_BONUS_H
+# define PUSH_SWAP_BONUS_H
 
-int	find_max(int a, int b)
-{
-	if (a > b)
-		return (a);
-	return (b);
-}
+# include "../push_swap.h"
+# include "../gnl/get_next_line.h"
 
-int	find_min(int a, int b)
-{
-	if (a < b)
-		return (a);
-	return (b);
-}
+void	checker_commands(t_stack **stack_a, t_stack **stack_b,
+		char *arr, t_data *data);
+
+
+#endif

@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 18:10:42 by sutku             #+#    #+#             */
-/*   Updated: 2022/11/17 21:40:28 by sutku            ###   ########.fr       */
+/*   Updated: 2023/02/07 14:26:17 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,18 @@ char	*remain_part(char *s_arr, char **line, int *flag)
 	int	a;
 	int	len;
 
-	len = ft_strlen(s_arr);
+	len = ft_strlen_gnl(s_arr);
 	a = check_newline(s_arr);
 	if (a == len)
 	{
-		*line = ft_strjoin(*line, s_arr, len);
+		*line = ft_strjoin_gnl(*line, s_arr, len);
 		free(s_arr);
 		return (NULL);
 	}
 	else
 	{
-		*line = ft_strjoin(*line, s_arr, a + 1);
-		s_arr = ft_substr(s_arr, a + 1, len - a);
+		*line = ft_strjoin_gnl(*line, s_arr, a + 1);
+		s_arr = ft_substr_gnl(s_arr, a + 1, len - a);
 		*flag = 1;
 		return (s_arr);
 	}
@@ -82,13 +82,13 @@ char	*my_get_line(int control, char **s_arr, char **line, char *buff)
 	a = check_newline(buff);
 	if (a == control)
 	{
-		*line = ft_strjoin(*line, buff, control);
+		*line = ft_strjoin_gnl(*line, buff, control);
 		return (NULL);
 	}
 	else
 	{
-		*line = ft_strjoin(*line, buff, a + 1);
-		*s_arr = ft_substr(buff, a + 1, control - a);
+		*line = ft_strjoin_gnl(*line, buff, a + 1);
+		*s_arr = ft_substr_gnl(buff, a + 1, control - a);
 		return (*line);
 	}
 	return (NULL);
