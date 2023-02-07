@@ -6,13 +6,13 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:01:03 by sutku             #+#    #+#             */
-/*   Updated: 2023/02/01 17:36:57 by sutku            ###   ########.fr       */
+/*   Updated: 2023/02/06 13:33:54 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rev_rotate_a(t_stack **stack_a, t_data *data)
+void	rev_rotate_a(t_stack **stack_a, t_data *data, int flag)
 {
 	t_stack	*last;
 
@@ -26,10 +26,11 @@ void	rev_rotate_a(t_stack **stack_a, t_data *data)
 		last -> next = NULL;
 		data -> operations++;
 	}
-	ft_printf("rra\n");
+	if (flag == 1)
+		ft_printf("rra\n");
 }
 
-void	rev_rotate_b(t_stack **stack_b, t_data *data)
+void	rev_rotate_b(t_stack **stack_b, t_data *data, int flag)
 {
 	t_stack	*last;
 
@@ -44,10 +45,11 @@ void	rev_rotate_b(t_stack **stack_b, t_data *data)
 		last -> next = NULL;
 		data -> operations++;
 	}
-	ft_printf("rrb\n");
+	if (flag == 1)
+		ft_printf("rrb\n");
 }
 
-void	rev_rotate_ab(t_stack **stack_a, t_stack **stack_b, t_data *data)
+void	rev_rotate_ab(t_stack **stack_a, t_stack **stack_b, t_data *data, int flag)
 {
 	t_stack	*last;
 
@@ -67,5 +69,6 @@ void	rev_rotate_ab(t_stack **stack_a, t_stack **stack_b, t_data *data)
 		last -> next = NULL;
 		data -> operations++;
 	}
-	ft_printf("rrr\n");
+	if (flag == 1)
+		ft_printf("rrr\n");
 }

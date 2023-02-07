@@ -6,13 +6,13 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:01:00 by sutku             #+#    #+#             */
-/*   Updated: 2023/02/01 12:37:58 by sutku            ###   ########.fr       */
+/*   Updated: 2023/02/07 17:36:32 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_b(t_stack **stack_a, t_stack **stack_b, t_data *data)
+void	push_b(t_stack **stack_a, t_stack **stack_b, t_data *data, int flag)
 {
 	t_stack	*first_a;
 
@@ -37,11 +37,12 @@ void	push_b(t_stack **stack_a, t_stack **stack_b, t_data *data)
 			data -> size_a--;
 			data -> size_b++;
 		}
-		ft_printf("pb\n");
+		if (flag == 1)
+			ft_printf("pb\n");
 	}
 }
 
-void	push_a(t_stack **stack_a, t_stack **stack_b, t_data *data)
+void	push_a(t_stack **stack_a, t_stack **stack_b, t_data *data, int flag)
 {
 	t_stack	*first_b;
 
@@ -53,7 +54,6 @@ void	push_a(t_stack **stack_a, t_stack **stack_b, t_data *data)
 			(*stack_b) = (*stack_b)-> next;
 			first_b -> next = NULL;
 			(*stack_a) = first_b;
-			data -> operations++;
 			data -> size_b--;
 			data -> size_a++;
 		}
@@ -62,10 +62,10 @@ void	push_a(t_stack **stack_a, t_stack **stack_b, t_data *data)
 			(*stack_b) = (*stack_b)-> next;
 			first_b -> next = (*stack_a);
 			*stack_a = first_b;
-			data -> operations++;
 			data -> size_b--;
 			data -> size_a++;
 		}
-		ft_printf("pa\n");
+		if (flag == 1)
+			ft_printf("pa\n");
 	}
 }

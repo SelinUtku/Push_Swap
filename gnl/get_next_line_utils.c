@@ -6,13 +6,13 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 13:48:48 by sutku             #+#    #+#             */
-/*   Updated: 2022/11/17 21:15:07 by sutku            ###   ########.fr       */
+/*   Updated: 2023/02/07 14:25:29 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_strlen(const char *str)
+int	ft_strlen_gnl(const char *str)
 {
 	int	i;
 
@@ -24,14 +24,14 @@ int	ft_strlen(const char *str)
 	return (i);
 }
 
-char	*ft_substr(char *s, unsigned int start, size_t len)
+char	*ft_substr_gnl(char *s, unsigned int start, size_t len)
 {
 	char			*arr;
 	size_t			i;
 	size_t			len_s;
 
 	i = 0;
-	len_s = ft_strlen(s);
+	len_s = ft_strlen_gnl(s);
 	if (start > len_s)
 		len = 0;
 	if (len_s - start <= len)
@@ -50,13 +50,13 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 	return (arr);
 }
 
-char	*ft_strjoin(char *s1, char *s2, int ct)
+char	*ft_strjoin_gnl(char *s1, char *s2, int ct)
 {
 	int		i;
 	int		j;
 	char	*arr;
 
-	arr = malloc((ft_strlen(s1) + ct + 1) * sizeof(char));
+	arr = malloc((ft_strlen_gnl(s1) + ct + 1) * sizeof(char));
 	if (!arr)
 		return (0);
 	i = 0;

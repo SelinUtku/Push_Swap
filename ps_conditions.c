@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 12:55:52 by sutku             #+#    #+#             */
-/*   Updated: 2023/02/01 13:16:25 by sutku            ###   ########.fr       */
+/*   Updated: 2023/02/06 13:39:39 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	push_c0(t_stack **stack_a, t_stack **stack_b, t_data *data)
 		while (--i > 0)
 		{
 			if ((*stack_a)-> value > data -> median)
-				push_b(stack_a, stack_b, data);
+				push_b(stack_a, stack_b, data, 1);
 			else
-				rotate_a(stack_a, data);
+				rotate_a(stack_a, data, 1);
 		}
 	}
 }
@@ -34,18 +34,18 @@ void	c1(t_stack **stack_a, t_stack **stack_b, t_data *data, t_costs *cost)
 {
 	while (cost -> rot_a > 0 && cost -> rot_b > 0)
 	{
-		rotate_ab(stack_a, stack_b, data);
+		rotate_ab(stack_a, stack_b, data, 1);
 		cost -> rot_a--;
 		cost -> rot_b--;
 	}
 	while (cost -> rot_a > 0)
 	{
-		rotate_a(stack_a, data);
+		rotate_a(stack_a, data, 1);
 		cost -> rot_a--;
 	}
 	while (cost -> rot_b > 0)
 	{
-		rotate_b(stack_b, data);
+		rotate_b(stack_b, data, 1);
 		cost -> rot_b--;
 	}
 }
@@ -54,12 +54,12 @@ void	c2(t_stack **stack_a, t_stack **stack_b, t_data *data, t_costs *cost)
 {
 	while (cost -> rot_a > 0)
 	{
-		rotate_a(stack_a, data);
+		rotate_a(stack_a, data, 1);
 		cost -> rot_a--;
 	}
 	while (cost -> rev_rot_b > 0)
 	{
-		rev_rotate_b(stack_b, data);
+		rev_rotate_b(stack_b, data, 1);
 		cost -> rev_rot_b--;
 	}
 }
@@ -68,12 +68,12 @@ void	c3(t_stack **stack_a, t_stack **stack_b, t_data *data, t_costs *cost)
 {
 	while (cost -> rev_rot_a > 0)
 	{
-		rev_rotate_a(stack_a, data);
+		rev_rotate_a(stack_a, data, 1);
 		cost -> rev_rot_a--;
 	}
 	while (cost -> rot_b > 0)
 	{
-		rotate_b(stack_b, data);
+		rotate_b(stack_b, data, 1);
 		cost -> rot_b--;
 	}
 }
@@ -82,18 +82,18 @@ void	c4(t_stack **stack_a, t_stack **stack_b, t_data *data, t_costs *cost)
 {
 	while (cost -> rev_rot_a > 0 && cost -> rev_rot_b > 0)
 	{
-		rev_rotate_ab(stack_a, stack_b, data);
+		rev_rotate_ab(stack_a, stack_b, data, 1);
 		cost -> rev_rot_a--;
 		cost -> rev_rot_b--;
 	}
 	while (cost -> rev_rot_a > 0)
 	{
-		rev_rotate_a(stack_a, data);
+		rev_rotate_a(stack_a, data, 1);
 		cost -> rev_rot_a--;
 	}
 	while (cost -> rev_rot_b > 0)
 	{
-		rev_rotate_b(stack_b, data);
+		rev_rotate_b(stack_b, data, 1);
 		cost -> rev_rot_b--;
 	}
 }

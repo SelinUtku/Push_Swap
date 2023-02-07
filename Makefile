@@ -6,15 +6,21 @@
 #    By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/24 16:45:37 by sutku             #+#    #+#              #
-#    Updated: 2023/02/05 02:04:02 by sutku            ###   ########.fr        #
+#    Updated: 2023/02/07 17:57:13 by sutku            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .SILENT:
 
-PS_SRC		=	error_control.c find_data.c find_index.c long_atoi.c push_swap_utils.c push_swap.c \
-				push.c  rev_rotate.c rotate.c swap.c utils2.c ps_conditions.c algorithm.c
+PS_SRC		=	error_control.c find_data.c find_index.c long_atoi.c linkedlist_utils.c push_swap.c \
+				push.c rev_rotate.c rotate.c swap.c utils2.c ps_conditions.c algorithm.c
 PS_OBJ		=	$(PS_SRC:.c=.o)
+
+PS_MAIN		=	ps_main.c
+PS_MAIN_OBJ	= 	$(PS_MAIN:.c=.o)
+
+BONUS_SRC	=	push_swap_bonus/checker.c 
+BONUS_OBJ	=	$(BONUS_SRC:.c=.o)
 
 GNL_SRC		=	gnl/get_next_line_utils.c gnl/get_next_line.c
 GNL_OBJ		=	$(GNL_SRC:.c=.o)
@@ -27,9 +33,10 @@ PRINTF_LIB	=	ftprintf/libftprintf.a
 
 CC		= 	gcc
 RM		=   rm -f
-CFLAGS	=	-I.#-Wall -Werror -Wextra
+CFLAGS	=	-I. -Wall -Werror -Wextra
 
 NAME	=	push_swap
+NAME_B	=	checker
 
 DEF_COLOR = \033[0;39m
 RED = \033[0;91m
@@ -42,9 +49,13 @@ WHITE = \033[0;97m
 
 all:	$(NAME)
 
-$(NAME): $(PS_OBJ) $(LIBFT_LIB) $(PRINTF_LIB)
-	$(CC) $(CFLAGS) $(PS_OBJ) $(LIBFT_LIB) $(PRINTF_LIB) -o $(NAME)
+$(NAME): $(PS_OBJ) $(LIBFT_LIB) $(PRINTF_LIB) $(PS_MAIN_OBJ)
+	$(CC) $(CFLAGS) $(PS_OBJ) $(LIBFT_LIB) $(PRINTF_LIB) $(PS_MAIN_OBJ) -o $(NAME)
 	echo "Push_Swap compiled successfully"
+
+$(NAME_B): $(BONUS_OBJ) $(PS_OBJ) $(LIBFT_LIB) $(PRINTF_LIB) $(GNL_OBJ)
+	$(CC) $(CFLAGS) $(PS_OBJ) $(GNL_OBJ) $(LIBFT_LIB) $(PRINTF_LIB) $(BONUS_OBJ) -o $(NAME_B)
+	echo "Push_Swap_Bonus compiled successfully"
 
 $(LIBFT_LIB):
 	make bonus -C $(LIBFT) && make clean -C $(LIBFT)
@@ -55,16 +66,18 @@ $(PRINTF_LIB):
 	echo "Printf compiled successfully"
 
 clean:
-	$(RM) $(PS_OBJ) $(GNL_OBJ)
+	$(RM) $(PS_OBJ) $(PS_MAIN_OBJ)
+	$(RM) $(GNL_OBJ) $(BONUS_OBJ)
+	$(RM) $(LIBFT_LIB) $(PRINTF_LIB)
 	echo "$(MAGENTA)Object-Files are cleaned!"
 
 fclean: clean
-	$(RM) $(NAME)
-	$(RM) $(LIBFT_LIB)
-	$(RM) $(PRINTF_LIB)
-	echo "$(MAGENTA)All Object-Files/Programs/Libraries are cleaned!"
-	
+	$(RM) $(NAME) 
+	$(RM) $(NAME_B)
+	echo "$(MAGENTA)Programs / Libraries are cleaned!"
 
-re: fclean all
+bonus: all $(NAME_B)
+	
+re: fclean all 
 
 .PHONY: all clean fclean re
