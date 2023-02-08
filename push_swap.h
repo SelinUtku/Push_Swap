@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: Cutku <cutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:02:23 by sutku             #+#    #+#             */
-/*   Updated: 2023/02/07 12:29:41 by sutku            ###   ########.fr       */
+/*   Updated: 2023/02/08 09:30:48 by Cutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <stdlib.h>
 # include "libft/libft.h"
 # include "ftprintf/ft_printf.h"
+# include <fcntl.h>
+# include <limits.h>
 
 typedef struct s_stack
 {

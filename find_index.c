@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_index.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: Cutku <cutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 15:45:49 by sutku             #+#    #+#             */
-/*   Updated: 2023/02/06 12:07:21 by sutku            ###   ########.fr       */
+/*   Updated: 2023/02/08 10:05:34 by Cutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	put_zero(int **new, int argc)
 	}
 }
 
-void	*find_index(int argc, int *argv)
+void	*find_index(int argc, int *arr)
 {
 	int	*new;
 	int	i;
@@ -63,13 +63,14 @@ void	*find_index(int argc, int *argv)
 		small = 0;
 		while (++j < i)
 		{
-			if (argv[j] < argv[i])
+			if (arr[j] < arr[i])
 				small++;
-			else if (argv[j] > argv[i])
+			else if (arr[j] > arr[i])
 				new[j]++;
 		}
 		new[i] = small;
 	}
+	free(arr);
 	return (new);
 }
 

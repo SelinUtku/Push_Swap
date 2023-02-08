@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linkedlist_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: Cutku <cutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:44:17 by sutku             #+#    #+#             */
-/*   Updated: 2023/02/07 16:05:27 by sutku            ###   ########.fr       */
+/*   Updated: 2023/02/08 09:32:29 by Cutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,10 @@ void	create_data(t_data *data, t_costs *cost, int argc)
 	data -> size_a = argc;
 	data -> size_b = 0;
 	data -> operations = 0;
-	data -> min_a = INT32_MAX;
-	data -> max_a = INT32_MIN;
+	data -> min_a = INT_MAX;
+	data -> max_a = INT_MIN;
 	data -> median = 0;
-	cost -> shortest_op = INT32_MAX;
+	cost -> shortest_op = INT_MAX;
 	cost -> rot_a = -1;
 	cost -> rot_b = -1;
 	cost -> rev_rot_a = -1;

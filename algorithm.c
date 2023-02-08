@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: Cutku <cutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 02:03:18 by sutku             #+#    #+#             */
-/*   Updated: 2023/02/06 13:38:09 by sutku            ###   ########.fr       */
+/*   Updated: 2023/02/08 09:32:50 by Cutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	check_contions(t_stack **stack_a, t_stack **stack_b, t_data *data,
 		else if (cost -> shortest_op == find_max(cost -> rev_rot_a,
 				cost -> rev_rot_b))
 			c4(stack_a, stack_b, data, cost);
-		cost -> shortest_op = INT32_MAX;
+		cost -> shortest_op = INT_MAX;
 		push_a(stack_a, stack_b, data, 1);
 	}
 }
@@ -69,7 +69,7 @@ t_data *data, t_costs *cost)
 	int	min;
 
 	i = 0;
-	min = INT32_MAX;
+	min = INT_MAX;
 	while (i < data -> size_b)
 	{
 		num = find_index_in_a(stack_a, stack_b, data);
