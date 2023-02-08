@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_uns_decimal.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: Cutku <cutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 01:55:29 by sutku             #+#    #+#             */
-/*   Updated: 2022/11/28 21:15:33 by sutku            ###   ########.fr       */
+/*   Updated: 2023/02/08 09:36:00 by Cutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,7 @@ unsigned int	ft_uns_decimal(unsigned int n)
 
 	len = 0;
 	ft_putnbr_uns(n, 1);
-	if (n < 0)
-		len = 0;
-	else if (n == 0)
+	if (n == 0)
 		return (1);
 	while (n >= 1)
 	{

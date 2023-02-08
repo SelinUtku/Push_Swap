@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: Cutku <cutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 05:35:41 by sutku             #+#    #+#             */
-/*   Updated: 2023/02/01 12:37:48 by sutku            ###   ########.fr       */
+/*   Updated: 2023/02/08 09:34:48 by Cutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,10 @@
 int	itosize_a(int n)
 {
 	int	size;
-	int	sign;
 
 	size = 0;
-	sign = 0;
 	if (n < 0 && n > -2147483648)
 	{
-		sign = 1;
 		size++;
 		n = -n;
 	}

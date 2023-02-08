@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+         #
+#    By: Cutku <cutku@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/24 16:45:37 by sutku             #+#    #+#              #
-#    Updated: 2023/02/07 17:57:13 by sutku            ###   ########.fr        #
+#    Updated: 2023/02/08 09:50:24 by Cutku            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ PRINTF_LIB	=	ftprintf/libftprintf.a
 
 CC		= 	gcc
 RM		=   rm -f
-CFLAGS	=	-I. -Wall -Werror -Wextra
+CFLAGS	=	#-I. -Wall -Werror -Wextra
 
 NAME	=	push_swap
 NAME_B	=	checker
@@ -53,8 +53,8 @@ $(NAME): $(PS_OBJ) $(LIBFT_LIB) $(PRINTF_LIB) $(PS_MAIN_OBJ)
 	$(CC) $(CFLAGS) $(PS_OBJ) $(LIBFT_LIB) $(PRINTF_LIB) $(PS_MAIN_OBJ) -o $(NAME)
 	echo "Push_Swap compiled successfully"
 
-$(NAME_B): $(BONUS_OBJ) $(PS_OBJ) $(LIBFT_LIB) $(PRINTF_LIB) $(GNL_OBJ)
-	$(CC) $(CFLAGS) $(PS_OBJ) $(GNL_OBJ) $(LIBFT_LIB) $(PRINTF_LIB) $(BONUS_OBJ) -o $(NAME_B)
+$(NAME_B): $(BONUS_OBJ) $(PS_OBJ) $(GNL_OBJ) $(PRINTF_LIB) $(LIBFT_LIB)
+	$(CC) $(CFLAGS) $(BONUS_OBJ) $(PS_OBJ) $(GNL_OBJ) $(PRINTF_LIB) $(LIBFT_LIB) -o $(NAME_B)
 	echo "Push_Swap_Bonus compiled successfully"
 
 $(LIBFT_LIB):

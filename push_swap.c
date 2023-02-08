@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: Cutku <cutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:01:48 by sutku             #+#    #+#             */
-/*   Updated: 2023/02/07 14:35:08 by sutku            ###   ########.fr       */
+/*   Updated: 2023/02/08 10:09:25 by Cutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	check_errors(t_stack *stack, int count, char **argv, int len)
 	i = -1;
 	while (++i < count)
 	{
-		if (long_atoi(argv[i]) < INT32_MIN || long_atoi(argv[i]) > INT32_MAX)
+		if (long_atoi(argv[i]) < INT_MIN || long_atoi(argv[i]) > INT_MAX)
 		{
 			ft_printf("Error\n");
 			return (-1);
@@ -52,12 +52,12 @@ int	check_errors(t_stack *stack, int count, char **argv, int len)
 	return (0);
 }
 
-void	memory_free_ps(char **ptr, unsigned int i)
+void	memory_free_ps(char **ptr)
 {
 	unsigned int	j;
 
 	j = 0;
-	while (j < i)
+	while (ptr[j] != NULL)
 	{
 		free(ptr[j]);
 		j++;
@@ -79,17 +79,16 @@ int	parsing(t_stack **stack_a, int argc, char **argv)
 		while (i < argc)
 		{
 			ptr = ft_split(argv[i], 32);
-			if (!ptr)
-				return (memory_free_ps(argv, i), -1);
 			count = -1;
 			while (ptr[++count])
 				len++;
 			if (check_errors(*stack_a, count, ptr, len) == -1)
-				return (-1);
+				{memory_free_ps(ptr);
+				return (-1);}
 			create_linklist(stack_a, count, ptr);
+			memory_free_ps(ptr);
 			i++;
 		}
 	}
 	return (len);
 }
-
