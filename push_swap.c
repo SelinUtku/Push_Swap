@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Cutku <cutku@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:01:48 by sutku             #+#    #+#             */
-/*   Updated: 2023/02/08 10:09:25 by Cutku            ###   ########.fr       */
+/*   Updated: 2023/02/09 18:20:45 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	check_errors(t_stack *stack, int count, char **argv, int len)
 	{
 		if (long_atoi(argv[i]) < INT_MIN || long_atoi(argv[i]) > INT_MAX)
 		{
-			ft_printf("Error\n");
+			write(2, "Error\n", 6);
 			return (-1);
 		}
 		if (is_integer(argv[i]) == -1)
@@ -83,8 +83,7 @@ int	parsing(t_stack **stack_a, int argc, char **argv)
 			while (ptr[++count])
 				len++;
 			if (check_errors(*stack_a, count, ptr, len) == -1)
-				{memory_free_ps(ptr);
-				return (-1);}
+				return (memory_free_ps(ptr), -1);
 			create_linklist(stack_a, count, ptr);
 			memory_free_ps(ptr);
 			i++;

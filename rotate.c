@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:01:06 by sutku             #+#    #+#             */
-/*   Updated: 2023/02/06 13:35:30 by sutku            ###   ########.fr       */
+/*   Updated: 2023/02/08 12:39:32 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	rotate_a(t_stack **stack_a, t_data *data, int flag)
 		*stack_a = (*stack_a)-> next;
 		last -> next = NULL;
 		tmp -> next = last;
-		data -> operations++;
 	}
 	if (flag == 1)
 		ft_printf("ra\n");
@@ -46,7 +45,6 @@ void	rotate_b(t_stack **stack_b, t_data *data, int flag)
 		*stack_b = (*stack_b)-> next;
 		last -> next = NULL;
 		tmp -> next = last;
-		data -> operations++;
 	}
 	if (flag == 1)
 		ft_printf("rb\n");
@@ -73,7 +71,6 @@ void	rotate_ab(t_stack **stack_a, t_stack **stack_b, t_data *data, int flag)
 		*stack_b = (*stack_b)-> next;
 		last -> next = NULL;
 		tmp -> next = last;
-		data -> operations++;
 	}
 	if (flag == 1)
 		ft_printf("rr\n");

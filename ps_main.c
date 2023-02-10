@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Cutku <cutku@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 14:33:22 by sutku             #+#    #+#             */
-/*   Updated: 2023/02/08 10:22:32 by Cutku            ###   ########.fr       */
+/*   Updated: 2023/02/09 18:05:24 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@ int	main(int argc, char **argv)
 	if (len < 1)
 	{
 		delete_ll(&stack_a);
-		return (0);
+		return (-1);
 	}
 	push_swap(&stack_a, &stack_b, len);
 	delete_ll(&stack_a);
+	delete_ll(&stack_b);
 	return (0);
 }

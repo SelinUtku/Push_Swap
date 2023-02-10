@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 23:13:02 by sutku             #+#    #+#             */
-/*   Updated: 2023/02/05 01:57:16 by sutku            ###   ########.fr       */
+/*   Updated: 2023/02/09 17:38:03 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	is_duplicate(t_stack *stack, int a, int len)
 		{
 			if (stack -> value == a)
 			{
-				ft_printf("Error\n");
+				write(2, "Error\n", 6);
 				return (-1);
 			}
 			stack = stack -> next;
@@ -51,7 +51,7 @@ int	is_duplicate_arr(char **argv)
 	{
 		if (num == long_atoi(argv[i++]))
 		{
-			ft_printf("Error\n");
+			write(2, "Error\n", 6);
 			return (-1);
 		}
 	}
@@ -71,7 +71,7 @@ int	is_integer(char *str)
 	{
 		if (str[i] < '0' || str[i] > '9')
 		{
-			ft_printf("Error\n");
+			write(2, "Error\n", 6);
 			return (-1);
 		}
 		control = 1;
@@ -79,7 +79,7 @@ int	is_integer(char *str)
 	}
 	if (control == 0)
 	{
-		ft_printf("Error\n");
+		write(2, "Error\n", 6);
 		return (-1);
 	}
 	return (0);

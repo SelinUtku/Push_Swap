@@ -6,7 +6,7 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:55:23 by sutku             #+#    #+#             */
-/*   Updated: 2023/02/06 13:36:34 by sutku            ###   ########.fr       */
+/*   Updated: 2023/02/08 12:39:55 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	swap_a(t_stack **stack_a, t_data *data, int flag)
 		value2 = second -> value;
 		first -> value = value2;
 		second -> value = value1;
-		data -> operations++;
 	}
 	if (flag == 1)
 		ft_printf("sa\n");
@@ -48,7 +47,6 @@ void	swap_b(t_stack **stack_b, t_data *data, int flag)
 		value2 = second -> value;
 		first -> value = value2;
 		second -> value = value1;
-		data -> operations++;
 	}
 	if (flag == 1)
 		ft_printf("sb\n");
@@ -75,7 +73,6 @@ void	swap_ab(t_stack **stack_a, t_stack **stack_b, t_data *data, int flag)
 		value2 = second -> value;
 		first -> value = value2;
 		second -> value = value1;
-		data -> operations++;
 	}
 	if (flag == 1)
 		ft_printf("ss\n");

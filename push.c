@@ -6,13 +6,14 @@
 /*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:01:00 by sutku             #+#    #+#             */
-/*   Updated: 2023/02/07 17:36:32 by sutku            ###   ########.fr       */
+/*   Updated: 2023/02/08 12:38:21 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_b(t_stack **stack_a, t_stack **stack_b, t_data *data, int flag)
+void	push_b(t_stack **stack_a, t_stack **stack_b,
+		t_data *data, int flag)
 {
 	t_stack	*first_a;
 
@@ -24,7 +25,6 @@ void	push_b(t_stack **stack_a, t_stack **stack_b, t_data *data, int flag)
 			(*stack_a) = (*stack_a)-> next;
 			first_a -> next = NULL;
 			(*stack_b) = first_a;
-			data -> operations++;
 			data -> size_a--;
 			data -> size_b++;
 		}
@@ -33,7 +33,6 @@ void	push_b(t_stack **stack_a, t_stack **stack_b, t_data *data, int flag)
 			(*stack_a) = (*stack_a)-> next;
 			first_a -> next = (*stack_b);
 			*stack_b = first_a;
-			data -> operations++;
 			data -> size_a--;
 			data -> size_b++;
 		}
@@ -42,7 +41,8 @@ void	push_b(t_stack **stack_a, t_stack **stack_b, t_data *data, int flag)
 	}
 }
 
-void	push_a(t_stack **stack_a, t_stack **stack_b, t_data *data, int flag)
+void	push_a(t_stack **stack_a, t_stack **stack_b,
+		t_data *data, int flag)
 {
 	t_stack	*first_b;
 

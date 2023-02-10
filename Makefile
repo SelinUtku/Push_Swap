@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: Cutku <cutku@student.42heilbronn.de>       +#+  +:+       +#+         #
+#    By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/24 16:45:37 by sutku             #+#    #+#              #
-#    Updated: 2023/02/08 09:50:24 by Cutku            ###   ########.fr        #
+#    Updated: 2023/02/10 09:48:06 by sutku            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,9 +31,9 @@ LIBFT_LIB	=	libft/libft.a
 PRINTF		=	ftprintf/
 PRINTF_LIB	=	ftprintf/libftprintf.a
 
-CC		= 	gcc
+CC		= 	cc
 RM		=   rm -f
-CFLAGS	=	#-I. -Wall -Werror -Wextra
+CFLAGS	=	-Wall -Werror -Wextra
 
 NAME	=	push_swap
 NAME_B	=	checker

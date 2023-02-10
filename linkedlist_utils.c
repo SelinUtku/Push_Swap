@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linkedlist_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Cutku <cutku@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:44:17 by sutku             #+#    #+#             */
-/*   Updated: 2023/02/08 09:32:29 by Cutku            ###   ########.fr       */
+/*   Updated: 2023/02/08 12:41:22 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ void	create_data(t_data *data, t_costs *cost, int argc)
 {
 	data -> size_a = argc;
 	data -> size_b = 0;
-	data -> operations = 0;
 	data -> min_a = INT_MAX;
 	data -> max_a = INT_MIN;
 	data -> median = 0;

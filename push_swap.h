@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Cutku <cutku@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: sutku <sutku@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:02:23 by sutku             #+#    #+#             */
-/*   Updated: 2023/02/08 09:30:48 by Cutku            ###   ########.fr       */
+/*   Updated: 2023/02/09 17:42:30 by sutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 # define PUSH_SWAP_H
 
 # include <stdlib.h>
+# include <unistd.h>
 # include "libft/libft.h"
 # include "ftprintf/ft_printf.h"
-# include <fcntl.h>
 # include <limits.h>
 
 typedef struct s_stack
@@ -92,14 +92,19 @@ int			index_of_min(t_stack *stack, t_data *data);
 // Push Swap Operations
 void		swap_a(t_stack **stack_a, t_data *data, int flag);
 void		swap_b(t_stack **stack_b, t_data *data, int flag);
-void		swap_ab(t_stack **stack_a, t_stack **stack_b, t_data *data, int flag);
-void		push_a(t_stack **stack_a, t_stack **stack_b, t_data *data, int flag);
-void		push_b(t_stack **stack_a, t_stack **stack_b, t_data *data, int flag);
+void		swap_ab(t_stack **stack_a, t_stack **stack_b,
+				t_data *data, int flag);
+void		push_a(t_stack **stack_a, t_stack **stack_b,
+				t_data *data, int flag);
+void		push_b(t_stack **stack_a, t_stack **stack_b,
+				t_data *data, int flag);
 void		rotate_a(t_stack **stack_a, t_data *data, int flag);
 void		rotate_b(t_stack **stack_b, t_data *data, int flag);
-void		rotate_ab(t_stack **stack_a, t_stack **stack_b, t_data *data, int flag);
+void		rotate_ab(t_stack **stack_a, t_stack **stack_b,
+				t_data *data, int flag);
 void		rev_rotate_a(t_stack **stack_a, t_data *data, int flag);
 void		rev_rotate_b(t_stack **stack_b, t_data *data, int flag);
-void		rev_rotate_ab(t_stack **stack_a, t_stack **stack_b, t_data *data, int flag);
+void		rev_rotate_ab(t_stack **stack_a, t_stack **stack_b,
+				t_data *data, int flag);
 
 #endif
